@@ -33,8 +33,5 @@ public class EfectoAleatorioParcial extends Efecto{
         return numero;
         
     }
-
-            
-   
     
 }

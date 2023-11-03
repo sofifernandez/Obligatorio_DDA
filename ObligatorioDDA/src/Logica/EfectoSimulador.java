@@ -4,13 +4,12 @@
  */
 package Logica;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 /**
  *
- * @author lucas
+ * @author lucas     
  */
 public class EfectoSimulador extends Efecto {
 

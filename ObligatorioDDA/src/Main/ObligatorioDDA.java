@@ -41,19 +41,9 @@ public class ObligatorioDDA {
     
      private static void cargarDatosBase() {
         Fachada f = Fachada.getInstancia();
-
-       
-
-        
-        
- 
-        
+      
         //Los casilleros conocen el tipo de apuesta o el tipo de apuesta conoce sus casillero?
-        
-    
- 
-        
-        
+
         //AGREGAR SERVICIOtIPOAPUESTAS
         //TIPOS DE APUESTA---------------------------------------------
         TipoApuestaDirecta tipoDirecto= new TipoApuestaDirecta(36, "DIRECTA" );
@@ -139,17 +129,14 @@ public class ObligatorioDDA {
         
         //SORTEAR
         //cargarle mesa, configurar mesa, setear efecto, lanzar, pagar
-        
-               
-        
-        
+
         //vista setear mesa
         // Mesa, Crupier, Lista<TiposApuesta>
         //  crupier.configurarMesa(tiposHabilitados).
         
                 
         //Las mesas se asignan a los crupiers en la precarga
-        Mesa mesa1=new Mesa(tipoDirecto); //inicializar saldo en 0
+        Mesa mesa1=new Mesa(tipoDirecto); //inicializar balance en 0
         f.agregar(mesa1);
         
         //1) Login exitoso, agregarle mesa

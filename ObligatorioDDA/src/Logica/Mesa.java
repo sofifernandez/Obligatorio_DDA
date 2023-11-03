@@ -100,20 +100,18 @@ public class Mesa {
     }
     
     public List<Integer> ultimosResultados(int x){
-        List<Ronda> ultimasRondas=new ArrayList();
-        List<Integer>ultimosResultados=new ArrayList();
-        if(this.rondas.size()<x){
-            ultimasRondas=this.rondas;
+        List<Ronda> ultimasRondas;
+        List<Integer>ultimosResultados = new ArrayList();
+        if(this.rondas.size() < x){
+            ultimasRondas = this.rondas;
         } else {
-            ultimasRondas=  this.rondas.subList(this.getRondas().size() - x, this.rondas.size());
+            ultimasRondas =  this.rondas.subList(this.getRondas().size() - x, this.rondas.size());
         }
         for (Ronda r: ultimasRondas){
             ultimosResultados.add(r.getNumeroSorteado());
         }
         return ultimosResultados;
     }
-    
-
     
     public Ronda ultimaRonda(){
         for(Ronda r: this.rondas){

@@ -23,8 +23,8 @@ public class Casillero {
     
     public boolean contieneValor(int x){
         for(int i=0;i<this.numerosAsociados.length; i++){
-            if(numerosAsociados[i]==x){
-            return true;
+            if(numerosAsociados[i] == x){
+                return true;
             }
         }
         return false;

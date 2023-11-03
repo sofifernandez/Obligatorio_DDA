@@ -20,6 +20,7 @@ public class JugadorMesa {
     public JugadorMesa(Jugador jugador, Mesa mesa) {
         this.jugador = jugador;
         this.mesa = mesa;
+        this.apuestas = new ArrayList();
     }
 
     public Jugador getJugador() {

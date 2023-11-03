@@ -60,10 +60,10 @@ public class Apuesta {
         return total;
     }
     
-    public void actualizarSaldo(int x){
-        int totalApostado=this.totalApostado();
-        if(this.casillero.contieneValor(x)){
-            int factorPago= this.casillero.getTipo().getFactorDePago();
+    public void actualizarSaldo(int numeroSorteado){
+        int totalApostado = this.totalApostado();
+        if(this.casillero.contieneValor(numeroSorteado)){
+            int factorPago = this.casillero.getTipo().getFactorDePago();
             this.jugadorMesa.actualizarSaldo(totalApostado*factorPago);
         } 
     }

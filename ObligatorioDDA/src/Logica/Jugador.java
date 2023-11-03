@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,6 +17,7 @@ public class Jugador extends Usuario {
 
     public Jugador(String cedula, String password) {
         super(cedula, password);
+        this.jugadorMesas = new ArrayList();
     }
 
     public int getSaldo() {
@@ -35,7 +37,7 @@ public class Jugador extends Usuario {
     }
     
     public void actualizarSaldo(int x){
-        setSaldo(this.saldo+x);
+        this.setSaldo(this.saldo + x);
     }
     
 }
