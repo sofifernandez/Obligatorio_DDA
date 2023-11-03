@@ -17,7 +17,7 @@ public class EfectoAleatorioCompleto extends Efecto{
     }
 
     @Override
-    public int sortear() {
+    public int sortear(Ronda ronda) {
         Random nRandom = new Random();
         return nRandom.nextInt(37);
     }

@@ -54,20 +54,22 @@ public class Ronda {
         return efecto;
     }
 
+    public Mesa getMesa() {
+        return mesa;
+    }
+
+    public void setMesa(Mesa mesa) {
+        this.mesa = mesa;
+    }
+
     
-    
-//    public void setEfecto(Efecto efecto) {
-//        this.efecto = efecto;
-//    }
     
     public void sortear(){
-        this.getEfecto().agregarRonda(this);
-        this.setNumeroSorteado(this.getEfecto().sortear());
-        //return this.getEfecto().sortear();
+        this.setNumeroSorteado(this.efecto.sortear(this));
     }
     
-    public void sortearDos(){
-        
+    public List<Integer> ultimosResultados(int x){
+        return this.mesa.ultimosResultados(x);
     }
     
     public List<Integer> numerosApostadosDirectos(){
@@ -80,17 +82,18 @@ public class Ronda {
         return numeros;
     }
 
-    @Override
-    public String toString() {
-        return "Ronda{" + "apuestas=" + apuestas + ", efecto=" + efecto + ", numeroSorteado=" + numeroSorteado + ", numeroRonda=" + numeroRonda + '}';
-    }
     
-    public List<Integer> casillerosApostados(){
+    public List<Integer> numerosApostados(){
         List<Integer> casilleros=new ArrayList();
         for(Apuesta a: this.apuestas){
             casilleros.add(a.getCasillero().getCodUniversal());
         }
         return casilleros;
+    }
+    
+     @Override
+    public String toString() {
+        return "Ronda{" + "apuestas=" + apuestas + ", efecto=" + efecto + ", numeroSorteado=" + numeroSorteado + ", numeroRonda=" + numeroRonda + '}';
     }
     
     

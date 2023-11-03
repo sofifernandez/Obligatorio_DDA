@@ -14,7 +14,7 @@ import java.util.List;
 public class Mesa {
     
     private Crupier crupier; //ES NECESARIO QUE CONOZCA AL CRUPIER?
-    private List<Jugador> jugadores;
+    private List<JugadorMesa> jugadoresMesa;
     private List<TipoApuesta> tiposApuestas; 
     private List<Ronda> rondas;
     private int balance;
@@ -44,6 +44,14 @@ public class Mesa {
         this.balance = balance;
     }
 
+    public int getIdRonda() {
+        return idRonda;
+    }
+
+    public void setIdRonda(int idRonda) {
+        this.idRonda = idRonda;
+    }
+
     
     
     
@@ -55,12 +63,12 @@ public class Mesa {
         this.crupier = crupier;
     }
 
-    public List<Jugador> getJugadores() {
-        return jugadores;
+    public List<JugadorMesa> getJugadores() {
+        return jugadoresMesa;
     }
 
-    public void setJugadores(List<Jugador> jugadores) {
-        this.jugadores = jugadores;
+    public void setJugadores(List<JugadorMesa> jugadores) {
+        this.jugadoresMesa = jugadores;
     }
 
    
@@ -80,7 +88,8 @@ public class Mesa {
     }
     
     public void nuevaRonda(Efecto efecto){
-        this.idRonda++;
+        this.setIdRonda(idRonda+1);
+        //this.idRonda++;
         Ronda ronda=new Ronda(this.idRonda, efecto, this);
         ronda.sortear();
         this.rondas.add(ronda);
@@ -89,11 +98,26 @@ public class Mesa {
     public List<Integer> ultimosResultados(int x){
         List<Ronda> ultimasRondas=new ArrayList();
         List<Integer>ultimosResultados=new ArrayList();
-        ultimasRondas=  this.rondas.subList(this.getRondas().size() - x, this.rondas.size());
+        if(this.rondas.size()<x){
+            ultimasRondas=this.rondas;
+        } else {
+            ultimasRondas=  this.rondas.subList(this.getRondas().size() - x, this.rondas.size());
+        }
         for (Ronda r: ultimasRondas){
             ultimosResultados.add(r.getNumeroSorteado());
         }
         return ultimosResultados;
+    }
+    
+
+    
+    public Ronda ultimaRonda(){
+        for(Ronda r: this.rondas){
+            if(r.getNumeroRonda()==this.idRonda){
+                return r;
+            }
+        }
+        return null;
     }
     
 }

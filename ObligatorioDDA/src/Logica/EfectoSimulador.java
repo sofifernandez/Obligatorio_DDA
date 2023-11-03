@@ -19,9 +19,8 @@ public class EfectoSimulador extends Efecto {
     }
 
     @Override
-    public int sortear() {
-        Ronda ultimaRonda= this.getRondas().get(this.getRondas().size());
-        List<Integer> numerosApostados = ultimaRonda.numerosApostadosDirectos();
+    public int sortear(Ronda ronda) {
+        List<Integer> numerosApostados = ronda.numerosApostadosDirectos();
         Random random = new Random();
         int indiceAleatorio = random.nextInt(numerosApostados.size());
         int enteroAleatorio = numerosApostados.get(indiceAleatorio);

@@ -14,28 +14,27 @@ import java.util.List;
 public abstract class Efecto {
 
     private String nombre;
-    private List<Ronda> rondas;
+    //private List<Ronda> rondas;
+    //private Ronda ronda;
 
     public Efecto(String nombre) {
         this.nombre = nombre;
-        rondas= new ArrayList();
+        //rondas= new ArrayList();
     }
     
+    public abstract int sortear(Ronda ronda);
     
+//    public Ronda getRonda() {
+//        return ronda;
+//    }
+//
+//    public void setRonda(Ronda ronda) {
+//        this.ronda = ronda;
+//    }
     
-    public abstract int sortear();
-    
-    public List<Ronda> getRondas() {
-        return rondas;
-    }
-
-    public void setRondas(List<Ronda> rondas) {
-        this.rondas = rondas;
-    }
-    
-    public void agregarRonda(Ronda ronda){
-        rondas.add(ronda);
-    }
+//    public void agregarRonda(Ronda ronda){
+//        rondas.add(ronda);
+//    }
     
    
 }

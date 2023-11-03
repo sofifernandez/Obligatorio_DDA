@@ -163,7 +163,6 @@ public class ObligatorioDDA {
         //3) se carga el panel, hidratar con tipo de efecto
         //4) seleccionar efecto y lanzar.
         c1.lanzar(aleartorioCompleto);
-        //System.out.println(c1.getMesa().getRondas());
         c1.lanzar(aleartorioCompleto);
         c1.lanzar(aleartorioCompleto);
         c1.lanzar(aleartorioCompleto);
@@ -172,6 +171,5 @@ public class ObligatorioDDA {
         c1.lanzar(aleartorioParcial);
         c1.lanzar(aleartorioParcial);
         c1.lanzar(aleartorioParcial);
-
      }
 }

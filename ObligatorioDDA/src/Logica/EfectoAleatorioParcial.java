@@ -19,40 +19,22 @@ public class EfectoAleatorioParcial extends Efecto{
     }
 
     @Override
-    public int sortear() {
-        
-        List<Integer> ultimosNumeros =  this.ultimosTresNumerosSorteados();
-        System.out.println(ultimosNumeros);
-        
+    public int sortear(Ronda ronda) {
+        List<Integer> ultimosTresNumeros = ronda.ultimosResultados(3);
+        System.out.println(ultimosTresNumeros);
         Random nRandom = new Random();
         int numero = nRandom.nextInt(37);
+        int numeroAleatorio;
         
-        while(this.estaContenido(numero, ultimosNumeros)){
-            numero =  nRandom.nextInt(37);
-        }
+        do {
+            numeroAleatorio = nRandom.nextInt(37);
+        } while (ultimosTresNumeros.contains(numeroAleatorio));
+        
         return numero;
         
     }
-    private boolean estaContenido(int numero, List<Integer> numeros){
-        return numeros.contains(numero);
-    }
+
             
-    private List<Integer> ultimosTresNumerosSorteados(){
-        List<Ronda> ultimosElementos = new ArrayList();
-        
-        if(this.getRondas().size()<3){
-            for(Ronda r: this.getRondas()){
-                ultimosElementos.add(r);
-            }
-        } else {
-            ultimosElementos = this.getRondas().subList(this.getRondas().size() - 3, this.getRondas().size());
-        }
-        List<Integer> ultimosTresNumeros = new ArrayList();
-        
-        for(Ronda numero: ultimosElementos){
-            ultimosTresNumeros.add(numero.getNumeroSorteado());
-        }
-        return ultimosTresNumeros;
-    }
+   
     
 }
