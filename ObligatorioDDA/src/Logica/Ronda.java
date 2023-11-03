@@ -61,8 +61,6 @@ public class Ronda {
     public void setMesa(Mesa mesa) {
         this.mesa = mesa;
     }
-
-    
     
     public void sortear(){
         this.setNumeroSorteado(this.efecto.sortear(this));
@@ -89,6 +87,12 @@ public class Ronda {
             casilleros.add(a.getCasillero().getCodUniversal());
         }
         return casilleros;
+    }
+    
+    public void liquidar(){
+        for(Apuesta a: apuestas){
+            a.actualizarSaldo(this.getNumeroSorteado());
+        }
     }
     
      @Override

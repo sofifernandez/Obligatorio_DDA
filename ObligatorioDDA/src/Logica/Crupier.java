@@ -33,6 +33,10 @@ public class Crupier extends Usuario {
         this.mesa.nuevaRonda(efecto);
     }
     
+    public void liquidarPagos(){
+        this.mesa.liquidarRonda();
+    }
+    
 
     
     

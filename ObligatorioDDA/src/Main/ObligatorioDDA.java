@@ -171,5 +171,9 @@ public class ObligatorioDDA {
         c1.lanzar(aleartorioParcial);
         c1.lanzar(aleartorioParcial);
         c1.lanzar(aleartorioParcial);
+        
+        
+        //Unirse a una mesa
+        j1.unirseAMesa(mesa1);
      }
 }

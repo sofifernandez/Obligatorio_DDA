@@ -1,0 +1,4 @@
+EXCEPCIONES
+
+-jugador--> si se quiere unir a mesa y no tiene saldo
+-si quiere agregar ficha y no tiene saldo

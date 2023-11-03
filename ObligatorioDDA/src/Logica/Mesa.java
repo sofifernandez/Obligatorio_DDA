@@ -89,10 +89,14 @@ public class Mesa {
     
     public void nuevaRonda(Efecto efecto){
         this.setIdRonda(idRonda+1);
-        //this.idRonda++;
         Ronda ronda=new Ronda(this.idRonda, efecto, this);
         ronda.sortear();
         this.rondas.add(ronda);
+    }
+    
+    public void liquidarRonda(){
+        Ronda ultimaRonda= this.ultimaRonda();
+        ultimaRonda.liquidar();
     }
     
     public List<Integer> ultimosResultados(int x){

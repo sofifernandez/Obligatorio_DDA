@@ -52,4 +52,27 @@ public class Apuesta {
         return this.getCasillero().esDirecto();
     }
     
+    public int totalApostado(){
+        int total=0;
+        for(Ficha f: fichas){
+            total+= f.getValor();
+        }
+        return total;
+    }
+    
+    public void actualizarSaldo(int x){
+        int totalApostado=this.totalApostado();
+        if(this.casillero.contieneValor(x)){
+            int factorPago= this.casillero.getTipo().getFactorDePago();
+            this.jugadorMesa.actualizarSaldo(totalApostado*factorPago);
+        } 
+    }
+    
+    public void agregarFicha(Ficha ficha){
+        if(ficha.getValor()<jugadorMesa.getJugador().getSaldo()){
+            fichas.add(ficha);
+            this.jugadorMesa.actualizarSaldo(-1*ficha.getValor());
+        }
+    }
+    
 }

@@ -12,8 +12,7 @@ import java.util.List;
  */
 public class Jugador extends Usuario {
     private int saldo;
-    private List<Mesa> mesas;
-    private List<Apuesta> apuetas;
+    private List<JugadorMesa> jugadorMesas;
 
     public Jugador(String cedula, String password) {
         super(cedula, password);
@@ -26,21 +25,17 @@ public class Jugador extends Usuario {
     public void setSaldo(int saldo) {
         this.saldo = saldo;
     }
-
-    public List<Mesa> getMesas() {
-        return mesas;
+    
+    public void unirseAMesa(Mesa mesa){
+        if(saldo>0){
+            JugadorMesa nuevoJuego= new JugadorMesa(this, mesa);
+            jugadorMesas.add(nuevoJuego);
+        }
+        
     }
-
-    public void setMesas(List<Mesa> mesas) {
-        this.mesas = mesas;
-    }
-
-    public List<Apuesta> getApuetas() {
-        return apuetas;
-    }
-
-    public void setApuetas(List<Apuesta> apuetas) {
-        this.apuetas = apuetas;
+    
+    public void actualizarSaldo(int x){
+        setSaldo(this.saldo+x);
     }
     
 }
