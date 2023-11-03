@@ -1,0 +1,107 @@
+Croupier
+	1 por mesa, puede operar una mesa
+	Configura los tipos de apuesta habilitados
+
+
+Jugador
+	Varios por mesa, se puede unir a mas de una mesa a la vez
+	(Ya registrados), solo loggearse
+	Cuando se une a una mesa tiene que aparecer el saldo arriba (debería ser el mismo en todas y actualizarse en todas a la vez cuando hay una cambio)
+	Atributos: monto disponible
+	En cada ronda puede apostar a más de una cosa
+
+Apuesta
+	Atributos: numero o set de números apostado, jugador, mesa?, monto, resultado? (ganó, perdió), ronda
+
+
+Efectos (polimorfico)
+	Aleatorio (100%)
+	Aleatorio parcial (no se repiten los ultimos 3 que salieron. Un numero que sale en una ronda no puede volver a salir en por lo menos 3 más)
+	Simulador (se sortean solo los que tienen apuesta directa y el 0)
+	Atributos: lista de número disponibles?
+
+Fichas
+	solo valores: 1,5,10,50,100
+
+Mesa
+	Atributos: número
+	Abierta/Cerrada
+	Balance?
+	Jugadores unidos a la mesa
+
+Tipo de apuesta
+	Directa --> paga 36 a 1
+	Rojo/Negro --> paga 2 a 1 (Restricciones: no se vale Martingala,
+	Docenas --> No apostar más de una docena por ronda
+
+Ronda
+	Atributos: 0 o más Apuestas de jugadores; número sorteao; liquidación (ganadoras vs perdedoras); id (comienza en 1, 2, 3...), saldo anterior, recoleccion, liquidacion, salgo posterior
+	
+
+APP CROUPIER
+	1) Logear y configurar la mesa
+Se logea y ya le aparece la pantalla para iniciar una mesa (ya la tiene asignada en la precarga, el balance de la mesa se inicializa en 0), ahí va a configurar los tipos de apuestas habilitados (directa, colores, docena).
+La apuesta directa siempre debería estar disponible, así que se puede poner para elegir colores y docenas
+Despues que inicia, la mesa queda habilitada para que se unan jugadores.
+
+2) Operar mesa
+En cada ronda verá el total apostado para tal número o secuencia. No sabe qué jugaro apostó qué
+Ver total de apuestas (cantidad y monto). Ej: Apuestas: 17 | Monto:500
+Ultimos lanzamientos: poner los numeros que salieron sorteados en todas las rondas
+Tablitas: Rondas (Ronda, saldo anterior, apuestas, recoleccions, liquidacion, saldo posterior)
+	Jugadores (Jugador, saldo) --> jugadores unidos a la mesa
+
+Elegir efecto --> click en lanzar (se bloquea el tablero para que no puedan seguir apostando) --> 
+click en pagar: recoger ganacia, distribuir premios (actualizar saldo de jugadores), debloquear mesa
+Entre que se LANZA y se PAGA, quedan bloqueadas todas las funciones (el jugador no puede abandonas mesa)
+
+CERRAR MESA --> solo se puede cerrar mesa cuando está bloqueada: entre lanzar y pagar. Se cierra mesa y se paga y recolecta dinero
+
+APP JUGADOR
+Login--> pantalla para seleccionar mesa, entre las abiertas (queda siempre abierta esa pantalla)
+Tablero con apuestas, solo verá las que participó el
+Tabla con estadisticas: Valor (42 renglones si está todo habilitado), Ocurrencia (el total tiene que sumar 100%) --> esto es a nivel mesa, no importa si el jugador participó en todas las rondas o no
+
+Apostar --> click en ficha y luego click en lo que quiero apostar (se puede ir sumando si se hace más de una vez)
+Se le tiene que bloquear la pantalla cuando el cropupier lanza
+En su vista de la mesa el jugador solo ve sus fichitas colocadas en los casilleros
+
+Saber, balance/liquidacion de una ronda:
+Ronda conoce a apuestas y tiene como atributo en número sorteado
+En apuestas hay que recorrer la lista de casilleros que se apostaron y buscar si alguno tiene el número sorteado. Calcular con el monto y el tipo de apuesta el pago final
+
+En apuesta el monto total se calcula viendo el array de fichas que tiene
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+PREGUNTASA
+
+- Cuando hacemos Efecto.sortear() precisamos pasar al menos las ultimas 3 rondas, pero filtramos antes de pasar o pasamos todas las rondas y que cada efecto haga lo suyo? 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
