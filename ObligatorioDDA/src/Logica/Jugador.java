@@ -28,14 +28,16 @@ public class Jugador extends Usuario {
         this.saldo = saldo;
     }
     
-    public void unirseAMesa(Mesa mesa){
+    public JugadorMesa unirseAMesa(Mesa mesa){
+        JugadorMesa nuevoJuego= new JugadorMesa(this, mesa);
         if(saldo>0){
-            JugadorMesa nuevoJuego= new JugadorMesa(this, mesa);
             jugadorMesas.add(nuevoJuego);
+            return nuevoJuego;
         }
-        
+        return null;
+
     }
-    
+  
     public void actualizarSaldo(int x){
         this.setSaldo(this.saldo + x);
     }

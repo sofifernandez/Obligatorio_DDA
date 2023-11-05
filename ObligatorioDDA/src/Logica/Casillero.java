@@ -46,10 +46,7 @@ public class Casillero {
         this.numerosAsociados = numerosAsociados;
     }
 
-    @Override
-    public String toString() {
-        return "Casillero{" + "codUniversal=" + codUniversal + '}';
-    }
+  
 
     public TipoApuesta getTipo() {
         return tipo;
@@ -63,11 +60,31 @@ public class Casillero {
         return this.getTipo().getNombre().equals("DIRECTO");
     }
     
-    
-    
-    
-    
-    
-    
+      @Override
+    public String toString() {
+        return "Casillero{" + "codUniversal=" + codUniversal + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Casillero other = (Casillero) obj;
+        return this.codUniversal == other.codUniversal;
+    }
+       
   
 }

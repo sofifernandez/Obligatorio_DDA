@@ -16,6 +16,13 @@ public class Apuesta {
     private JugadorMesa jugadorMesa;
     private List<Ficha> fichas;
 
+    public Apuesta(Casillero casillero, Ronda ronda, JugadorMesa jugadorMesa, List<Ficha> fichas) {
+        this.casillero = casillero;
+        this.ronda = ronda;
+        this.jugadorMesa = jugadorMesa;
+        this.fichas = fichas;
+    }
+
     public Casillero getCasillero() {
         return casillero;
     }
@@ -60,12 +67,12 @@ public class Apuesta {
         return total;
     }
     
-    public void actualizarSaldo(int numeroSorteado){
+    public void pagarGanador(int numeroSorteado){
         int totalApostado = this.totalApostado();
-        if(this.casillero.contieneValor(numeroSorteado)){
+        if(this.casillero.contieneValor(numeroSorteado)){ //Los que ganaron en la apuesta
             int factorPago = this.casillero.getTipo().getFactorDePago();
             this.jugadorMesa.actualizarSaldo(totalApostado*factorPago);
-        } 
+        }
     }
     
     public void agregarFicha(Ficha ficha){
@@ -74,5 +81,12 @@ public class Apuesta {
             this.jugadorMesa.actualizarSaldo(-1*ficha.getValor());
         }
     }
+
+    @Override
+    public String toString() {
+        return "Apuesta{" + "casillero=" + casillero + ", jugadorMesa=" + jugadorMesa + '}';
+    }
+    
+    
     
 }

@@ -27,10 +27,11 @@ public class Crupier extends Usuario {
     
     public void configurarMesa(List<TipoApuesta> tipos){
         this.mesa.agregarTipoApuesta(tipos);
+        
     }
     
     public void lanzar(Efecto efecto){
-        this.mesa.nuevaRonda(efecto);
+        this.mesa.lanzar(efecto);
     }
     
     public void liquidarPagos(){

@@ -18,12 +18,22 @@ public class Ronda {
     private int numeroRonda;
     //agrego la mesa
     private Mesa mesa;
-
-    public Ronda(int numeroRonda, Efecto efecto, Mesa mesa) {
+    
+    public Ronda(int numeroRonda, Mesa mesa) {
         this.numeroRonda=numeroRonda;
-        this.efecto=efecto;
         this.mesa=mesa;
         //this.numeroSorteado=this.sortear();
+    }
+
+//    public Ronda(int numeroRonda, Efecto efecto, Mesa mesa) {
+//        this.numeroRonda=numeroRonda;
+//        this.efecto=efecto;
+//        this.mesa=mesa;
+//        //this.numeroSorteado=this.sortear();
+//    }
+    
+    public void setEfecto(Efecto efecto) {
+        this.efecto = efecto;
     }
 
     public List<Apuesta> getApuestas() {
@@ -91,14 +101,41 @@ public class Ronda {
     
     public void liquidar(){
         for(Apuesta a: apuestas){
-            a.actualizarSaldo(this.getNumeroSorteado());
+            a.pagarGanador(this.getNumeroSorteado());
         }
     }
     
      @Override
     public String toString() {
-        return "Ronda{" + "apuestas=" + apuestas + ", efecto=" + efecto + ", numeroSorteado=" + numeroSorteado + ", numeroRonda=" + numeroRonda + '}';
+        return "Ronda{" + "apuestas=" + apuestas + ", numeroSorteado=" + numeroSorteado + ", numeroRonda=" + numeroRonda + '}';
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ronda other = (Ronda) obj;
+        return this.numeroRonda == other.numeroRonda;
+    }
+
+    public void agregarApuesta(Apuesta apuesta) {
+        this.apuestas.add(apuesta);
+    }
+    
+    
     
     
 }

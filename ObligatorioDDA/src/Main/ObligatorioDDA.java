@@ -13,7 +13,9 @@ import Logica.Efecto;
 import Logica.EfectoAleatorioCompleto;
 import Logica.EfectoAleatorioParcial;
 import Logica.EfectoSimulador;
+import Logica.Ficha;
 import Logica.Jugador;
+import Logica.JugadorMesa;
 import Logica.Mesa;
 import Logica.TipoApuesta;
 import Presentacion.A_Inicio;
@@ -145,6 +147,7 @@ public class ObligatorioDDA {
                 // traer tipos de apuesta desde servicio
         List<TipoApuesta> tiposHabilitados =new ArrayList<>();
         tiposHabilitados.add(tipoDocena);
+        tiposHabilitados.add(tipoColor);
         c1.configurarMesa(tiposHabilitados);
        
         //3) se carga el panel, hidratar con tipo de efecto
@@ -161,6 +164,16 @@ public class ObligatorioDDA {
         
         
         //Unirse a una mesa
-        j1.unirseAMesa(mesa1);
+        System.out.println(j1.getSaldo());
+        JugadorMesa jugadorMesa = j1.unirseAMesa(mesa1);
+        //Creo unas Fichas
+        Ficha fichaDeUno = new Ficha(1);
+        Ficha fichaDeCinco = new Ficha(5);
+        Ficha fichaDeDiez = new Ficha(1);
+        
+        jugadorMesa.realizarApuesta(negros, fichaDeCinco, mesa1.rondaActual());
+        c1.liquidarPagos();
+        System.out.println(jugadorMesa.getApuestas());
+        
      }
 }

@@ -85,18 +85,26 @@ public class Mesa {
         for(TipoApuesta t: tiposNuevos){
             this.tiposApuestas.add(t);
         }
+        this.nuevaRonda();
     }
     
-    public void nuevaRonda(Efecto efecto){
+    public void nuevaRonda(){
         this.setIdRonda(idRonda+1);
-        Ronda ronda=new Ronda(this.idRonda, efecto, this);
-        ronda.sortear();
+        Ronda ronda=new Ronda(this.idRonda, this);
         this.rondas.add(ronda);
     }
     
+    public void lanzar(Efecto efecto){  
+        Ronda ronda = this.rondaActual();
+        ronda.setEfecto(efecto);
+        ronda.sortear();
+    }
+    
+    
     public void liquidarRonda(){
-        Ronda ultimaRonda= this.ultimaRonda();
+        Ronda ultimaRonda= this.rondaActual();
         ultimaRonda.liquidar();
+        this.nuevaRonda();
     }
     
     public List<Integer> ultimosResultados(int x){
@@ -113,7 +121,7 @@ public class Mesa {
         return ultimosResultados;
     }
     
-    public Ronda ultimaRonda(){
+    public Ronda rondaActual(){
         for(Ronda r: this.rondas){
             if(r.getNumeroRonda()==this.idRonda){
                 return r;
