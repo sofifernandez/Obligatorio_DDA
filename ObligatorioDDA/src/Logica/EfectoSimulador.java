@@ -20,6 +20,7 @@ public class EfectoSimulador extends Efecto {
     @Override
     public int sortear(Ronda ronda) {
         List<Integer> numerosApostados = ronda.numerosApostadosDirectos();
+        numerosApostados.add(0);
         Random random = new Random();
         int indiceAleatorio = random.nextInt(numerosApostados.size());
         int enteroAleatorio = numerosApostados.get(indiceAleatorio);

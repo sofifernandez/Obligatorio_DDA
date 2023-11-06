@@ -21,7 +21,6 @@ public class EfectoAleatorioParcial extends Efecto{
     @Override
     public int sortear(Ronda ronda) {
         List<Integer> ultimosTresNumeros = ronda.ultimosResultados(3);
-        System.out.println(ultimosTresNumeros);
         Random nRandom = new Random();
         int numero = nRandom.nextInt(37);
         int numeroAleatorio;

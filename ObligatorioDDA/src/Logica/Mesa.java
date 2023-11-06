@@ -14,7 +14,7 @@ import java.util.List;
 public class Mesa {
     
     private Crupier crupier; //ES NECESARIO QUE CONOZCA AL CRUPIER?
-    private List<JugadorMesa> jugadoresMesa;
+   // private List<JugadorMesa> jugadoresMesa;
     private List<TipoApuesta> tiposApuestas; 
     private List<Ronda> rondas;
     private int balance;
@@ -63,13 +63,13 @@ public class Mesa {
         this.crupier = crupier;
     }
 
-    public List<JugadorMesa> getJugadores() {
-        return jugadoresMesa;
-    }
-
-    public void setJugadores(List<JugadorMesa> jugadores) {
-        this.jugadoresMesa = jugadores;
-    }
+//    public List<JugadorMesa> getJugadores() {
+//        return jugadoresMesa;
+//    }
+//
+//    public void setJugadores(List<JugadorMesa> jugadores) {
+//        this.jugadoresMesa = jugadores;
+//    }
 
    
 

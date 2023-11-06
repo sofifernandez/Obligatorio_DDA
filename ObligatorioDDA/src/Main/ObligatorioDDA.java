@@ -152,28 +152,37 @@ public class ObligatorioDDA {
        
         //3) se carga el panel, hidratar con tipo de efecto
         //4) seleccionar efecto y lanzar.
-        c1.lanzar(aleartorioCompleto);
-        c1.lanzar(aleartorioCompleto);
-        c1.lanzar(aleartorioCompleto);
-        c1.lanzar(aleartorioCompleto);
-        System.out.println(c1.getMesa().getRondas());
-        System.out.println("\n");
-        c1.lanzar(aleartorioParcial);
-        c1.lanzar(aleartorioParcial);
-        c1.lanzar(aleartorioParcial);
+//        c1.lanzar(aleartorioCompleto);
+//        c1.lanzar(aleartorioCompleto);
+//        c1.lanzar(aleartorioCompleto);
+//        c1.lanzar(aleartorioCompleto);
+//        System.out.println(c1.getMesa().getRondas());
+//        System.out.println("\n");
+//        c1.lanzar(aleartorioParcial);
+//        c1.lanzar(aleartorioParcial);
+//        c1.lanzar(aleartorioParcial);
         
         
         //Unirse a una mesa
-        System.out.println(j1.getSaldo());
-        JugadorMesa jugadorMesa = j1.unirseAMesa(mesa1);
+        JugadorMesa jm1 = j1.unirseAMesa(mesa1);
+        JugadorMesa jm2 = j2.unirseAMesa(mesa1);
+        JugadorMesa jm3 = j3.unirseAMesa(mesa1);
+        
         //Creo unas Fichas
         Ficha fichaDeUno = new Ficha(1);
         Ficha fichaDeCinco = new Ficha(5);
-        Ficha fichaDeDiez = new Ficha(1);
+        Ficha fichaDeDiez = new Ficha(10);
         
-        jugadorMesa.realizarApuesta(negros, fichaDeCinco, mesa1.rondaActual());
+        jm1.realizarApuesta(primeraDocena, fichaDeCinco, mesa1.rondaActual());
+        //jm1.realizarApuesta(segundaDocena, fichaDeCinco, mesa1.rondaActual());
+        jm1.realizarApuesta(negros, fichaDeCinco, mesa1.rondaActual());        
+        
+        jm2.realizarApuesta(todosLosCasilleros.get(1), fichaDeCinco, mesa1.rondaActual());
+        jm2.realizarApuesta(todosLosCasilleros.get(2), fichaDeCinco, mesa1.rondaActual());
+        c1.lanzar(aleartorioSimulador);
+        System.out.println(mesa1.rondaActual().getNumeroSorteado());
         c1.liquidarPagos();
-        System.out.println(jugadorMesa.getApuestas());
+        System.out.println(jm1.getApuestas());
         
      }
 }

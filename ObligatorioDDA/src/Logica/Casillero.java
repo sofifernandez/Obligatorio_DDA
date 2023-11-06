@@ -57,7 +57,7 @@ public class Casillero {
     }
     
     public boolean esDirecto(){
-        return this.getTipo().getNombre().equals("DIRECTO");
+        return this.getTipo().getNombre().equals("DIRECTA");
     }
     
       @Override

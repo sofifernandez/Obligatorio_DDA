@@ -78,7 +78,7 @@ En apuesta el monto total se calcula viendo el array de fichas que tiene
 
 PREGUNTASA
 
-- Cuando hacemos Efecto.sortear() precisamos pasar al menos las ultimas 3 rondas, pero filtramos antes de pasar o pasamos todas las rondas y que cada efecto haga lo suyo? 
+- En efecto simulador> va a sortear alguno de los directos pero va a salir un número y un color, los que tienen ese color van a cobrar.
 
 
 

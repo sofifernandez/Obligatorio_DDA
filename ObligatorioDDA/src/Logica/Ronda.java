@@ -22,6 +22,7 @@ public class Ronda {
     public Ronda(int numeroRonda, Mesa mesa) {
         this.numeroRonda=numeroRonda;
         this.mesa=mesa;
+        this.apuestas=new ArrayList();
         //this.numeroSorteado=this.sortear();
     }
 
@@ -134,6 +135,7 @@ public class Ronda {
     public void agregarApuesta(Apuesta apuesta) {
         this.apuestas.add(apuesta);
     }
+
     
     
     
