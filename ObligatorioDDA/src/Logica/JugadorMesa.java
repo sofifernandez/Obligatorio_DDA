@@ -66,7 +66,7 @@ public class JugadorMesa {
     private void nuevaApuesta(Casillero casillero, Ficha ficha, Ronda ronda) {
         List<Ficha> fichas = new ArrayList();
         Apuesta nuevaApuesta = new Apuesta(casillero, ronda, this, fichas);
-        if(chequearRestriccionDocenas(ronda)){
+        if(chequearRestriccionDocenas()){
             System.out.println("no se puede apostar a mas de una docena por ronda.");
             return; //acá excepciones!
         }
@@ -76,19 +76,19 @@ public class JugadorMesa {
         this.apuestas.add(nuevaApuesta);
     }
     
-    private boolean chequearRestriccionColores(Ronda ronda){
-        for (Apuesta a: ronda.getApuestas()){
-            if (a.esDocenaDeJugador(this)){
-                return true; 
-            }
-        }
-        return false;
-    }
+//    private boolean chequearRestriccionColores(Ronda ronda){
+//        for (Apuesta a: ronda.getApuestas()){
+//            if (a.esDocenaDeJugador(this)){
+//                return true; 
+//            }
+//        }
+//        return false;
+//    }
     
     
-    private boolean chequearRestriccionDocenas(Ronda ronda){ //Restricciones: no se puede apostar a más de una docena por ronda.
-        for (Apuesta a: ronda.getApuestas()){
-            if (a.esDocenaDeJugador(this)){
+    private boolean chequearRestriccionDocenas(){ //Restricciones: no se puede apostar a más de una docena por ronda.
+        for (Apuesta a: this.apuestas){
+            if (a.esDocenaDeJugador()){
                 return true; 
             }
         }

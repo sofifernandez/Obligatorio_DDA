@@ -87,13 +87,10 @@ public class Apuesta {
         return "Apuesta{" + "casillero=" + casillero + ", jugadorMesa=" + jugadorMesa + '}';
     }
     
-    public boolean esDocenaDeJugador(JugadorMesa jugador){
-        return this.jugadorMesa.equals(jugador) && this.esApuestaDocena();
-    }
-    
-    public boolean esApuestaDocena(){
+    public boolean esDocenaDeJugador(){
         return this.casillero.getCodUniversal()>=40 && this.casillero.getCodUniversal()<=42;
     }
+   
     
     
 }
