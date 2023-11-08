@@ -184,5 +184,19 @@ public class ObligatorioDDA {
         c1.liquidarPagos();
         System.out.println(jm1.getApuestas());
         
+        //En el controlador hay que atrapar las exceptions y mandarle a la vista el mensaje
+        /*
+        try{
+        jm1.realizarApuesta(primeraDocena, fichaDeCinco, mesa1.rondaActual());
+        }
+        catch (ApuestaInvalidaException e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }        
+        */
+        
+        //EN ALGUN LADO DE LA LOGICA TIENE QUE ESTAR IMPLEMENTADAS EXCEPCIONES SI SE APUESTAN TIPOS NO HABILITADOS. 
+        //NO SE LE PUEDE DELEGAR TODA LA RESPONSABILIDAD A LA CAPA DE PRESENTACION PARA QUE PONGA setVisible:true o lo que sea
+        // y eso sea lo unico que impida hacer apuesta, que pasa si eso falla o cambio la interfaz? --> modelar defensivamente, pensar que la vista puede fallar
+        
      }
 }

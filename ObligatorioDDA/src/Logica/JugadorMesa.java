@@ -63,11 +63,13 @@ public class JugadorMesa {
      
     }
 
+    //private void nuevaApuesta(Casillero casillero, Ficha ficha, Ronda ronda) throws ApuestaInvalidaException{
     private void nuevaApuesta(Casillero casillero, Ficha ficha, Ronda ronda) {
         List<Ficha> fichas = new ArrayList();
         Apuesta nuevaApuesta = new Apuesta(casillero, ronda, this, fichas);
         if(chequearRestriccionDocenas()){
             System.out.println("no se puede apostar a mas de una docena por ronda.");
+            //throw new ApuestaInvalidaException("No se puede apostar a mas de una docena por ronda");
             return; //acá excepciones!
         }
         System.out.println("sigue");

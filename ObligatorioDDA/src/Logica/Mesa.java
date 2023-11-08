@@ -14,7 +14,7 @@ import java.util.List;
 public class Mesa {
     
     private Crupier crupier; //ES NECESARIO QUE CONOZCA AL CRUPIER?
-   // private List<JugadorMesa> jugadoresMesa;
+   // private List<JugadorMesa> jugadoresMesa; //es necesario que conozca esto?
     private List<TipoApuesta> tiposApuestas; 
     private List<Ronda> rondas;
     private int balance;
