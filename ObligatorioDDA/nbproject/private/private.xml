@@ -3,28 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/Jugador.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Servicios/ServicioUsuarios.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/Mesa.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/EfectoSimulador.java</file>
+            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Presentacion/Controladores/LoginJugadorControlador.java</file>
+            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Presentacion/Controladores/LoginCrupierControlador.java</file>
             <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Presentacion/A_Inicio.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/Casillero.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Utilitarios/Observer.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/Efecto.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/TipoApuesta.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/EfectoAleatorioParcial.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/TipoApuestaDirecta.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/Ficha.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Utilitarios/Observable.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/JugadorMesa.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Excepciones/ApuestaInvalidaException.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/Crupier.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/Apuesta.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Main/ObligatorioDDA.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/Usuario.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/TipoApuestaDocena.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/EfectoAleatorioCompleto.java</file>
-            <file>file:/C:/Users/sofia/OneDrive/ORT/Semestre4/DDA/1_OBLIGATORIO/ObligatorioDDA/src/Logica/Ronda.java</file>
         </group>
     </open-files>
 </project-private>

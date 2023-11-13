@@ -19,6 +19,7 @@ import Logica.JugadorMesa;
 import Logica.Mesa;
 import Logica.TipoApuesta;
 import Presentacion.A_Inicio;
+
 import Servicios.Fachada;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,8 @@ public class ObligatorioDDA {
     public static void main(String[] args) {
         try {
             cargarDatosBase();
+//            PanelRuleta panel=new PanelRuleta();
+//            panel.setVisible(true);
             //new A_Inicio().setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
