@@ -36,7 +36,7 @@ public class ObligatorioDDA {
         try {
             cargarDatosBase();
             //new Inicio().setVisible(true);
-            new MesaJugadorVentana().setVisible(true);
+            new Inicio().setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -150,7 +150,7 @@ public class ObligatorioDDA {
         
         //1) Login exitoso, agregarle mesa
         c1.setMesa(mesa1);
-        c2.setMesa(mesa2);
+        c3.setMesa(mesa2);
         //2) En la ventana para configurar la mesa
                 // traer tipos de apuesta desde servicio
                 
