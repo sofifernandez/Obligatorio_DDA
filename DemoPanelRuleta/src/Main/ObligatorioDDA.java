@@ -17,6 +17,7 @@ import Logica.Jugador;
 import Logica.Mesa;
 import Logica.TipoApuesta;
 import Presentacion.Vistas.Inicio;
+import Presentacion.Vistas.Jugador.MesaJugadorVentana;
 
 import Servicios.Fachada;
 import java.util.ArrayList;
@@ -34,9 +35,8 @@ public class ObligatorioDDA {
     public static void main(String[] args) {
         try {
             cargarDatosBase();
-//            PanelRuleta panel=new PanelRuleta();
-//            panel.setVisible(true);
-            new Inicio().setVisible(true);
+            //new Inicio().setVisible(true);
+            new MesaJugadorVentana().setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -52,6 +52,10 @@ public class ObligatorioDDA {
         TipoApuestaDirecta tipoDirecto= new TipoApuestaDirecta(36, "DIRECTA" );
         TipoApuestaColor tipoColor= new TipoApuestaColor(2, "COLOR");
         TipoApuestaDocena tipoDocena=new TipoApuestaDocena(3, "DOCENA");
+       f.agregar(tipoDirecto);
+       f.agregar(tipoColor);
+       f.agregar(tipoDocena);
+       
         
         //CASILLEROS---------------------------------------------------
         //INDIVIDUALES:   del 0 al 36  
@@ -149,11 +153,12 @@ public class ObligatorioDDA {
         c2.setMesa(mesa2);
         //2) En la ventana para configurar la mesa
                 // traer tipos de apuesta desde servicio
-        List<TipoApuesta> tiposHabilitados =new ArrayList<>();
-        tiposHabilitados.add(tipoDocena);
-        tiposHabilitados.add(tipoColor);
-        c1.configurarMesa(tiposHabilitados);
-        c2.configurarMesa(tiposHabilitados);
+                
+//        List<TipoApuesta> tiposHabilitados =new ArrayList<>();
+//        tiposHabilitados.add(tipoDocena);
+//        tiposHabilitados.add(tipoColor);
+//        c1.configurarMesa(tiposHabilitados);
+//        c2.configurarMesa(tiposHabilitados);
        
         //3) se carga el panel, hidratar con tipo de efecto
         //4) seleccionar efecto y lanzar.

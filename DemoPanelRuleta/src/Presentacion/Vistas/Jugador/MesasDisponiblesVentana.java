@@ -57,7 +57,6 @@ public class MesasDisponiblesVentana extends javax.swing.JFrame implements Mesas
         jLabel1.setText("Mesas abiertas");
 
         btnUnirse.setBackground(new java.awt.Color(204, 255, 204));
-        btnUnirse.setForeground(new java.awt.Color(0, 0, 0));
         btnUnirse.setText("Unirse");
         btnUnirse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -65,8 +64,7 @@ public class MesasDisponiblesVentana extends javax.swing.JFrame implements Mesas
             }
         });
 
-        btnLogOff.setBackground(new java.awt.Color(255, 51, 51));
-        btnLogOff.setForeground(new java.awt.Color(0, 0, 0));
+        btnLogOff.setBackground(new java.awt.Color(255, 102, 102));
         btnLogOff.setText("Log Off");
         btnLogOff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -157,17 +155,13 @@ public class MesasDisponiblesVentana extends javax.swing.JFrame implements Mesas
     
     
     private class MesasRenderer extends JLabel implements ListCellRenderer<Mesa> {
-        
         @Override
         public Component getListCellRendererComponent(JList list, Mesa mesa, int index, boolean isSelected, boolean cellHasFocus) {
-            
             this.setText("Mesa: "  + mesa.getIdMesa() + "-" + " Balance: " + mesa.getBalance() + "-");// + " Crupier: " + mesa.getCrupier().getNombreCompleto());
             if (isSelected) {
                 this.setBackground(Color.BLUE);
             }
             return this;
-            
-            
         }
     }
     

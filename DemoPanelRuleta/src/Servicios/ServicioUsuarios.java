@@ -17,12 +17,12 @@ import java.util.List;
 public class ServicioUsuarios {
     List<Jugador> jugadores;
     List<Crupier> crupiers;
-    //List<Sesion> sesionesActivas;
+    
 
     public ServicioUsuarios() {
         jugadores = new ArrayList();
         crupiers = new ArrayList();
-        //sesionesActivas = new ArrayList();
+       
     }
 
     public void agregar(Jugador jugador) {

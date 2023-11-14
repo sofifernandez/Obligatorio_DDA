@@ -17,9 +17,12 @@ import java.util.List;
  */
 public class ServicioMesas {
      List<Mesa> mesas;
+     List<Mesa> mesasDisponibles;
+     
 
     public ServicioMesas() {
         mesas = new ArrayList();
+        mesasDisponibles=obtenerMesasDisponibles();
     }
 
     public void agregar(Mesa mesa) {
@@ -33,11 +36,17 @@ public class ServicioMesas {
     }
     
     public List<Mesa> obtenerMesasDisponibles(){
-        List<Mesa> mesasDisponibles = new ArrayList();
+        mesasDisponibles=new ArrayList();
         for(Mesa m: mesas){
             if(m.esDisponible()) mesasDisponibles.add(m);
         } 
+        //Fachada.getInstancia().notificar(Observador.Evento.LISTADO_MESAS_MODIFICADO);
         return mesasDisponibles;
+    }
+    
+    public void setDisponibles(){
+        mesasDisponibles=obtenerMesasDisponibles();
+        Fachada.getInstancia().notificar(Observador.Evento.LISTADO_MESAS_MODIFICADO);
     }
     
     public void agregarJugadorMesaAMesa(JugadorMesa jugador, Mesa mesa){

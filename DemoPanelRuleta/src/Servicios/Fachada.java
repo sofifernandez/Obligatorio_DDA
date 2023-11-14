@@ -8,6 +8,7 @@ import Logica.Crupier;
 import Logica.Jugador;
 import Logica.JugadorMesa;
 import Logica.Mesa;
+import Logica.TipoApuesta;
 import Utilitarios.Observable;
 import java.util.List;
 
@@ -18,8 +19,8 @@ import java.util.List;
 public class Fachada extends Observable {
     
     private ServicioUsuarios sUsuarios;
-    //private ServicioCasilleros sCasilleros;
     private ServicioMesas sMesas;
+    private ServicioTiposApuesta sTiposAp;
 
     private static Fachada instancia;
     
@@ -27,6 +28,7 @@ public class Fachada extends Observable {
         sUsuarios = new ServicioUsuarios();
         //sCasilleros = new ServicioCasilleros();
         sMesas= new ServicioMesas();
+        sTiposAp= new ServicioTiposApuesta();
     }
 
     public static Fachada getInstancia() {
@@ -64,6 +66,26 @@ public class Fachada extends Observable {
     public void agregarJugadorMesaAMesa(JugadorMesa jugador, Mesa mesa) {
         sMesas.agregarJugadorMesaAMesa(jugador, mesa);
     }
+
+    public void agregar(TipoApuesta tipo) {
+        sTiposAp.agregar(tipo);
+    }
+
+    public ServicioTiposApuesta getsTiposAp() {
+        return sTiposAp;
+    }
+
+    public void setsTiposAp(ServicioTiposApuesta sTiposAp) {
+        this.sTiposAp = sTiposAp;
+    }
+
+    public void setDisponibles() {
+        sMesas.setDisponibles();
+    }
+    
    
+    
+    
+    
     
 }

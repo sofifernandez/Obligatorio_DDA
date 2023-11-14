@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import Servicios.Fachada;
 import java.util.List;
 
 /**
@@ -28,7 +29,10 @@ public class Crupier extends Usuario {
     public void configurarMesa(List<TipoApuesta> tipos){
         this.mesa.agregarTipoApuesta(tipos);
         this.mesa.setDisponible(true);
+        Fachada.getInstancia().setDisponibles(); 
     }
+    
+ 
     
     public void lanzar(Efecto efecto){
         this.mesa.lanzar(efecto);
@@ -38,9 +42,7 @@ public class Crupier extends Usuario {
         this.mesa.liquidarRonda();
     }
     
-
-    
-    
+  
    
    
 }

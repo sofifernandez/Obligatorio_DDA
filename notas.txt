@@ -84,6 +84,8 @@ PREGUNTASA
 
 -JLIST mostrar la linea seleccionada?
 
+- el crupier puede disparar una funcion en servicioMesas? es la unica forma que encontramos para avisar que se seteo la mesa en disponible. Porque la vista de mesas disponibles no está suscrito a cada mesa, sino al listado completo
+
 
 
 

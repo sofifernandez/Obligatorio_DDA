@@ -4,9 +4,11 @@
  */
 package Presentacion.Vistas;
 
+import Logica.Crupier;
 import Logica.Usuario;
 import Presentacion.Controladores.LoginCrupierControlador;
-import javax.swing.JOptionPane;
+import Presentacion.Vistas.Crupier.ConfigurarMesaVentana;
+
 
 /**
  *
@@ -20,7 +22,7 @@ public class LoginCrupier extends LoginVentana {
 
     @Override
     public void abrirSiguientePantalla(Usuario usuario) {
-        JOptionPane.showMessageDialog(this, usuario);
+       new ConfigurarMesaVentana((Crupier) usuario).setVisible(true);
     }
     
 }

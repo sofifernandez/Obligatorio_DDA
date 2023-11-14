@@ -48,10 +48,7 @@ public class MesasDisponiblesControlador implements Observador {
     public void actualizar(Observable origen, Evento evento) {
          if (evento.equals(Observador.Evento.LISTADO_MESAS_MODIFICADO)) {
             hidratarLista();
-         }
-        
-         
-         
+         }         
     }
 
     
