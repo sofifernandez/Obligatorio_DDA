@@ -4,9 +4,11 @@
  */
 package Presentacion.Vistas;
 
+import Logica.Jugador;
 import Logica.Usuario;
 import Presentacion.Controladores.LoginJugadorControlador;
-import javax.swing.JOptionPane;
+import Presentacion.Vistas.Jugador.MesasDisponiblesVentana;
+
 
 /**
  *
@@ -20,8 +22,9 @@ public class LoginJugador extends LoginVentana {
 
     @Override
     public void abrirSiguientePantalla(Usuario usuario) {
-        //la ventana que sea
-         JOptionPane.showMessageDialog(this, usuario);
+        System.out.println("Aca estoy");
+        new MesasDisponiblesVentana((Jugador) usuario).setVisible(true);
+        
     }
     
 }

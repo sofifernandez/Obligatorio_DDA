@@ -32,6 +32,7 @@ public class Jugador extends Usuario {
         JugadorMesa nuevoJuego= new JugadorMesa(this, mesa);
         if(saldo>0){
             jugadorMesas.add(nuevoJuego);
+            
             return nuevoJuego;
         }
         return null;

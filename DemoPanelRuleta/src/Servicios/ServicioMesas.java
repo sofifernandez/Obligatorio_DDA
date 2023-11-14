@@ -5,6 +5,7 @@
 package Servicios;
 
 import Logica.Casillero;
+import Logica.JugadorMesa;
 import Logica.Mesa;
 import Utilitarios.Observador;
 import java.util.ArrayList;
@@ -29,6 +30,18 @@ public class ServicioMesas {
     public void eliminar (Mesa mesa){
         mesas.remove(mesa);
         Fachada.getInstancia().notificar(Observador.Evento.LISTADO_MESAS_MODIFICADO);
+    }
+    
+    public List<Mesa> obtenerMesasDisponibles(){
+        List<Mesa> mesasDisponibles = new ArrayList();
+        for(Mesa m: mesas){
+            if(m.esDisponible()) mesasDisponibles.add(m);
+        } 
+        return mesasDisponibles;
+    }
+    
+    public void agregarJugadorMesaAMesa(JugadorMesa jugador, Mesa mesa){
+        mesa.agregarJugadorMesa(jugador);
     }
     
     //FALTA ELIMINAR, DE CUANDO SE CIERRA UNA MESA

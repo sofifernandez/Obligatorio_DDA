@@ -13,12 +13,9 @@ import Logica.Efecto;
 import Logica.EfectoAleatorioCompleto;
 import Logica.EfectoAleatorioParcial;
 import Logica.EfectoSimulador;
-import Logica.Ficha;
 import Logica.Jugador;
-import Logica.JugadorMesa;
 import Logica.Mesa;
 import Logica.TipoApuesta;
-import Presentacion.A_Inicio;
 import Presentacion.Vistas.Inicio;
 
 import Servicios.Fachada;
@@ -143,16 +140,20 @@ public class ObligatorioDDA {
                 
         //Las mesas se asignan a los crupiers en la precarga
         Mesa mesa1=new Mesa(tipoDirecto); //inicializar balance en 0
+        Mesa mesa2=new Mesa(tipoDirecto);
         f.agregar(mesa1);
+        f.agregar(mesa2);
         
         //1) Login exitoso, agregarle mesa
         c1.setMesa(mesa1);
+        c2.setMesa(mesa2);
         //2) En la ventana para configurar la mesa
                 // traer tipos de apuesta desde servicio
         List<TipoApuesta> tiposHabilitados =new ArrayList<>();
         tiposHabilitados.add(tipoDocena);
         tiposHabilitados.add(tipoColor);
         c1.configurarMesa(tiposHabilitados);
+        c2.configurarMesa(tiposHabilitados);
        
         //3) se carga el panel, hidratar con tipo de efecto
         //4) seleccionar efecto y lanzar.

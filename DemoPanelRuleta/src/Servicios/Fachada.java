@@ -4,11 +4,12 @@
  */
 package Servicios;
 
-import Logica.Casillero;
 import Logica.Crupier;
 import Logica.Jugador;
+import Logica.JugadorMesa;
 import Logica.Mesa;
 import Utilitarios.Observable;
+import java.util.List;
 
 /**
  *
@@ -54,6 +55,14 @@ public class Fachada extends Observable {
     
      public void agregar(Mesa mesa) {
         sMesas.agregar(mesa);
+    }
+
+    public List<Mesa> obtenerMesasDisponibles() {
+        return sMesas.obtenerMesasDisponibles();
+    }
+
+    public void agregarJugadorMesaAMesa(JugadorMesa jugador, Mesa mesa) {
+        sMesas.agregarJugadorMesaAMesa(jugador, mesa);
     }
    
     

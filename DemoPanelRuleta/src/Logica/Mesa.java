@@ -20,15 +20,23 @@ public class Mesa extends Observable {
     private List<TipoApuesta> tiposApuestas; 
     private List<Ronda> rondas;
     private int balance;
+
+    
     private int idRonda;
+    private int idMesa;
+    private boolean disponible;
+    private static int idClase = 0;
 
     public Mesa(TipoApuestaDirecta directa) {
        this.balance=0;
+       this.idMesa = idClase + 1;
+       this.disponible = false;
        this.tiposApuestas=new ArrayList();
        this.tiposApuestas.add(directa);
        this.rondas=new ArrayList();
        this.jugadoresMesa=new ArrayList();
        this.idRonda=0;
+       idClase++;
     }
 
     public List<Ronda> getRondas() {
@@ -41,6 +49,9 @@ public class Mesa extends Observable {
 
     public int getBalance() {
         return balance;
+    }
+    public int getIdMesa() {
+        return idMesa;
     }
 
     public void setBalance(int balance) {
@@ -137,6 +148,19 @@ public class Mesa extends Observable {
         public void borrarJugadorMesa(JugadorMesa jugador){
         this.jugadoresMesa.remove(jugador);
         this.notificar(Observador.Evento.LISTADO_JUGADORES_MODIFICADO);
+    }
+
+    public boolean esDisponible() {
+        return this.disponible;
+    }
+
+    public void setDisponible(boolean b) {
+        this.disponible = b;
+    }
+
+    @Override
+    public String toString() {
+        return "Mesa{" + "idMesa=" + idMesa + '}';
     }
     
 }

@@ -80,6 +80,10 @@ PREGUNTASA
 
 - En efecto simulador> va a sortear alguno de los directos pero va a salir un número y un color, los que tienen ese color van a cobrar.
 
+- En los titulos de unirse a mesa y seleccionar mesa, el setTitle va derecho en el constructor de la vista? sin pedirle nada al controlador.
+
+-JLIST mostrar la linea seleccionada?
+
 
 
 
