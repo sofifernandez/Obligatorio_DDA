@@ -82,6 +82,12 @@ public class Fachada extends Observable {
     public void setDisponibles() {
         sMesas.setDisponibles();
     }
+
+    public List<TipoApuesta> getTipos() {
+        return sTiposAp.getTipos();
+    }
+    
+    
     
    
     

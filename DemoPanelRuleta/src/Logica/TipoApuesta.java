@@ -57,6 +57,24 @@ public abstract class TipoApuesta {
     public void setCasilleros(List<Casillero> casilleros) {
         this.casilleros = casilleros;
     }
+    
+    public List<Integer> getCellCodes(){
+        List<Integer> numerosCeldas=new ArrayList();
+        for(Casillero c: casilleros){
+            numerosCeldas.add(c.getCodUniversal());
+        }
+        return numerosCeldas;
+    }
+    
+    public Casillero obtenerCasillero(int cellCode){
+        Casillero casillero=null;
+        for(Casillero c: casilleros){
+            if(c.getCodUniversal()==cellCode){
+                casillero=c;
+            }
+        }
+        return casillero;
+    }
 
     @Override
     public int hashCode() {

@@ -37,6 +37,7 @@ public class ObligatorioDDA {
             cargarDatosBase();
             //new Inicio().setVisible(true);
             new Inicio().setVisible(true);
+            //new MesaJugadorVentana().setVisible(true);
         } catch (Exception ex) {
             ex.printStackTrace();
         }

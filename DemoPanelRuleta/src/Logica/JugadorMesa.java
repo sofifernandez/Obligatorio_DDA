@@ -52,7 +52,20 @@ public class JugadorMesa {
         this.jugador.actualizarSaldo(x);
     }
     
-    public void realizarApuesta(Casillero casillero, Ficha ficha, Ronda ronda){
+//    public void realizarApuesta(Casillero casillero, Ficha ficha, Ronda ronda){
+//        for(Apuesta a: this.apuestas){
+//            if(a.getCasillero().equals(casillero) && a.getRonda().equals(ronda)){
+//                a.agregarFicha(ficha);
+//                return;
+//            }
+//        }
+//        this.nuevaApuesta(casillero, ficha, ronda);
+//    }
+    
+        public void realizarApuesta(int cellCode, int valorFicha){
+        Casillero casillero=this.getMesa().obtenerCasillero(cellCode);
+        Ficha ficha=new Ficha(valorFicha);
+        Ronda ronda= this.getMesa().rondaActual();
         for(Apuesta a: this.apuestas){
             if(a.getCasillero().equals(casillero) && a.getRonda().equals(ronda)){
                 a.agregarFicha(ficha);

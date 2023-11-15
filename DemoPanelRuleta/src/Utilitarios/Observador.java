@@ -12,12 +12,10 @@ public interface Observador {
     
     public enum Evento{
         LISTADO_MESAS_MODIFICADO,
-        MESA_BLOQUEADA,
-        MESA_CERRADA,
         LISTADO_JUGADORES_MODIFICADO,
         SORTEO_REALIZADO,
-        BALANCE_ACTUALIZADO,
-        
+        DATOS_MESA_ACTUALIZADOS,
+   
         
         APUESTAS_MODIFICADAS
     }

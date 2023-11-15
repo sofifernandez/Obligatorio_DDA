@@ -4,6 +4,10 @@
  */
 package Presentacion.Vistas.Jugador;
 
+import Logica.JugadorMesa;
+import Presentacion.Controladores.MesaJugadorControlador;
+import Presentacion.Interfaces.MesaJugadorInterface;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -11,24 +15,19 @@ import javax.swing.JLabel;
  *
  * @author sofia
  */
-public class MesaJugadorVentana extends javax.swing.JFrame {
+public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugadorInterface{
 
-    /**
-     * Creates new form MesaJugadorVentana
-     */
-    public MesaJugadorVentana() {
+    private MesaJugadorControlador controlador;
+    private int fichaSeleccionada;
+    
+    public MesaJugadorVentana(JugadorMesa jm) {
         initComponents();
         fichas();
+        controlador=new MesaJugadorControlador(jm, this);
+        fichaSeleccionada=-1;
     }
     
-    
-    private class Ficha {
-
-        public JButton button;
-        public Ficha(JButton button) {
-            this.button = button;
-        }
-    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,13 +45,16 @@ public class MesaJugadorVentana extends javax.swing.JFrame {
         txtSaldo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtMesa = new javax.swing.JTextField();
         txtRonda = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtUsername = new javax.swing.JTextPane();
         txtSorteado = new javax.swing.JTextField();
         ficha1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        ficha5 = new javax.swing.JButton();
+        ficha10 = new javax.swing.JButton();
+        ficha50 = new javax.swing.JButton();
+        ficha100 = new javax.swing.JButton();
 
         jTextField2.setText("jTextField2");
 
@@ -81,7 +83,29 @@ public class MesaJugadorVentana extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("jLabel1");
+        ficha5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ficha5ActionPerformed(evt);
+            }
+        });
+
+        ficha10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ficha10ActionPerformed(evt);
+            }
+        });
+
+        ficha50.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ficha50ActionPerformed(evt);
+            }
+        });
+
+        ficha100.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ficha100ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,7 +122,7 @@ public class MesaJugadorVentana extends javax.swing.JFrame {
                         .addGap(129, 129, 129)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(45, 45, 45)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -111,9 +135,15 @@ public class MesaJugadorVentana extends javax.swing.JFrame {
                             .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(148, 148, 148)
-                                .addComponent(ficha1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(52, 52, 52)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ficha1)
+                                .addGap(18, 18, 18)
+                                .addComponent(ficha5)
+                                .addGap(26, 26, 26)
+                                .addComponent(ficha10)
+                                .addGap(18, 18, 18)
+                                .addComponent(ficha50)
+                                .addGap(18, 18, 18)
+                                .addComponent(ficha100)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(63, Short.MAX_VALUE))))
@@ -128,24 +158,24 @@ public class MesaJugadorVentana extends javax.swing.JFrame {
                         .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel5)
                         .addComponent(jLabel6)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtRonda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addComponent(ficha1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ficha100, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ficha1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+                            .addComponent(ficha5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ficha10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(ficha50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
@@ -156,35 +186,52 @@ public class MesaJugadorVentana extends javax.swing.JFrame {
     
     
     public void fichas(){
-        
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componente/coin.gif"))); // NOI18N
-        //c3.setLabelFor(c0);
-        jLabel1.setText("500");
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIconTextGap(0);
-        jLabel1.setMaximumSize(new java.awt.Dimension(80, 80));
-        jLabel1.setMinimumSize(new java.awt.Dimension(80, 80));
-        jLabel1.setPreferredSize(new java.awt.Dimension(80, 80));
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 24, 40, 40));
-        
-        
-    //jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componente/coin.gif"))); // NOI18N
-    
-    
         ficha1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ficha1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componente/coin.gif"))); // NOI18N
-        //c3.setLabelFor(c0);
-        ficha1.setText("500");
+        ficha1.setText("1");
         ficha1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         ficha1.setIconTextGap(0);
         ficha1.setMaximumSize(new java.awt.Dimension(80, 80));
         ficha1.setMinimumSize(new java.awt.Dimension(80, 80));
         ficha1.setPreferredSize(new java.awt.Dimension(80, 80));
-        //add(ficha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(68, 24, 40, 40));
-    
-    //jButton1.setText("500");
-    //jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componente/coin.gif")));
+        
+        ficha5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ficha5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componente/coin.gif"))); // NOI18N
+        ficha5.setText("5");
+        ficha5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ficha5.setIconTextGap(0);
+        ficha5.setMaximumSize(new java.awt.Dimension(80, 80));
+        ficha5.setMinimumSize(new java.awt.Dimension(80, 80));
+        ficha5.setPreferredSize(new java.awt.Dimension(80, 80));
+        
+        ficha10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ficha10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componente/coin.gif"))); // NOI18N
+        ficha10.setText("10");
+        ficha10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ficha10.setIconTextGap(0);
+        ficha10.setMaximumSize(new java.awt.Dimension(80, 80));
+        ficha10.setMinimumSize(new java.awt.Dimension(80, 80));
+        ficha10.setPreferredSize(new java.awt.Dimension(80, 80));
+        
+        
+        ficha50.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ficha50.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componente/coin.gif"))); // NOI18N
+        ficha50.setText("50");
+        ficha50.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ficha50.setIconTextGap(0);
+        ficha50.setMaximumSize(new java.awt.Dimension(80, 80));
+        ficha50.setMinimumSize(new java.awt.Dimension(80, 80));
+        ficha50.setPreferredSize(new java.awt.Dimension(80, 80));
+        
+        ficha100.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ficha100.setIcon(new javax.swing.ImageIcon(getClass().getResource("/componente/coin.gif"))); // NOI18N
+        ficha100.setText("100");
+        ficha100.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        ficha100.setIconTextGap(0);
+        ficha100.setMaximumSize(new java.awt.Dimension(80, 80));
+        ficha100.setMinimumSize(new java.awt.Dimension(80, 80));
+        ficha100.setPreferredSize(new java.awt.Dimension(80, 80));
+        
     }
     
     private void txtRondaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRondaActionPerformed
@@ -192,58 +239,94 @@ public class MesaJugadorVentana extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRondaActionPerformed
 
     private void ficha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha1ActionPerformed
-        // TODO add your handling code here:
+        fichaSeleccionada=1;
     }//GEN-LAST:event_ficha1ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MesaJugadorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MesaJugadorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MesaJugadorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MesaJugadorVentana.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void ficha5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha5ActionPerformed
+        fichaSeleccionada=5;
+    }//GEN-LAST:event_ficha5ActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MesaJugadorVentana().setVisible(true);
-            }
-        });
-    }
+    private void ficha10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha10ActionPerformed
+        fichaSeleccionada=10;
+    }//GEN-LAST:event_ficha10ActionPerformed
+
+    private void ficha50ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha50ActionPerformed
+        fichaSeleccionada=50;
+    }//GEN-LAST:event_ficha50ActionPerformed
+
+    private void ficha100ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha100ActionPerformed
+        fichaSeleccionada=100;
+    }//GEN-LAST:event_ficha100ActionPerformed
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ficha1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton ficha10;
+    private javax.swing.JButton ficha100;
+    private javax.swing.JButton ficha5;
+    private javax.swing.JButton ficha50;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private componente.PanelRuleta panelRuleta1;
+    private javax.swing.JTextField txtMesa;
     private javax.swing.JTextField txtRonda;
     private javax.swing.JTextField txtSaldo;
     private javax.swing.JTextField txtSorteado;
     private javax.swing.JTextPane txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actualizarSaldo(int saldo) {
+        txtSaldo.setText(""+saldo);
+    }
+
+    @Override
+    public void actualizarNumRonda(int idRonda) {
+        txtRonda.setText(""+idRonda);
+    }
+
+    @Override
+    public void actualizarNumMesa(int idMesa) {
+        txtMesa.setText(""+idMesa);
+    }
+
+    @Override
+    public void actualizarNumSorteado(int numeroSorteado) {
+        txtSorteado.setText(""+numeroSorteado);
+    }
+
+    @Override
+    public void setNombreJugador(String nombreCompleto) {
+        txtUsername.setText(nombreCompleto);
+    }
+
+    @Override
+    public void bloquearMesa() {
+        panelRuleta1.pausar();
+    }
+
+    @Override
+    public void desbloquearMesa() {
+        panelRuleta1.reanudar();
+    }
+
+    @Override
+    public void setTiposHabilitados(List<Integer> casilleros) {
+        for(Integer i: casilleros){
+            panelRuleta1.setVisible(i, true);
+        }
+        
+    }
+
+    @Override
+    public void prepararMesa(int i) {
+        panelRuleta1.setVisible(i, false);
+    }
+
+   
 }

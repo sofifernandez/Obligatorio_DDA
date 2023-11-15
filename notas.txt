@@ -78,13 +78,12 @@ En apuesta el monto total se calcula viendo el array de fichas que tiene
 
 PREGUNTASA
 
-- En efecto simulador> va a sortear alguno de los directos pero va a salir un número y un color, los que tienen ese color van a cobrar.
 
 - En los titulos de unirse a mesa y seleccionar mesa, el setTitle va derecho en el constructor de la vista? sin pedirle nada al controlador.
 
 -JLIST mostrar la linea seleccionada?
 
-- el crupier puede disparar una funcion en servicioMesas? es la unica forma que encontramos para avisar que se seteo la mesa en disponible. Porque la vista de mesas disponibles no está suscrito a cada mesa, sino al listado completo
+-tenemos que crear los casilleros que no se habilitan nunca
 
 
 

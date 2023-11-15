@@ -137,13 +137,13 @@ public class ConfigurarMesaVentana extends javax.swing.JFrame implements Configu
         //habilitados=jList1.getSelectedValuesList();
         //int[] prueba=jList1.getSelectedIndices();
         controlador.configurarMesa(habilitados);
-        //JOptionPane.showMessageDialog(this, "HOLA MUNDO" + habilitados);
+        //JOptionPane.showMessageDialog(this, habilitados);
     }
     
     
     @Override
     public void siguienteVentana(Crupier crupier){
-        JOptionPane.showMessageDialog(this, "HOLA MUNDO");
+        //JOptionPane.showMessageDialog(this, "HOLA MUNDO");
 }
     
     private class TiposRenderer extends JPanel  implements ListCellRenderer<TipoApuesta> {
@@ -169,7 +169,7 @@ public class ConfigurarMesaVentana extends javax.swing.JFrame implements Configu
         setEnabled(list.isEnabled());
         setComponentOrientation(list.getComponentOrientation());
         setFont(list.getFont());
-            return this;  
+        return this;  
         }
         
        

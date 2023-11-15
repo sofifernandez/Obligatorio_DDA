@@ -16,7 +16,7 @@ import java.util.List;
 public class Mesa extends Observable {
     
     private Crupier crupier; //ES NECESARIO QUE CONOZCA AL CRUPIER?
-   private List<JugadorMesa> jugadoresMesa; //es necesario que conozca esto?
+    private List<JugadorMesa> jugadoresMesa; //es necesario que conozca esto?
     private List<TipoApuesta> tiposApuestas; 
     private List<Ronda> rondas;
     private int balance;
@@ -109,7 +109,7 @@ public class Mesa extends Observable {
         Ronda ultimaRonda= this.rondaActual();
         int balanceRonda= ultimaRonda.liquidar();
         this.actualizarBalance(balanceRonda);
-        this.notificar(Observador.Evento.BALANCE_ACTUALIZADO);
+        this.notificar(Observador.Evento.DATOS_MESA_ACTUALIZADOS);
         this.nuevaRonda();
     }
     
@@ -162,6 +162,16 @@ public class Mesa extends Observable {
     @Override
     public String toString() {
         return "Mesa{" + "idMesa=" + idMesa + '}';
+    }
+    
+    public Casillero obtenerCasillero(int cellCode){
+        for(TipoApuesta t: tiposApuestas){
+            Casillero casillero=t.obtenerCasillero(cellCode);
+            if(casillero!=null){
+                return casillero;
+            }
+        }
+        return null;
     }
     
 }

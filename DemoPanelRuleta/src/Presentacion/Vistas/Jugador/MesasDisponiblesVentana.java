@@ -149,7 +149,8 @@ public class MesasDisponiblesVentana extends javax.swing.JFrame implements Mesas
 
     @Override
     public void siguienteVentana(JugadorMesa jm) {
-        JOptionPane.showMessageDialog(this, "HOLA MUNDO" + jm.getMesa());
+        new MesaJugadorVentana(jm).setVisible(true);
+        //JOptionPane.showMessageDialog(this, "HOLA MUNDO" + jm.getMesa());
     }
     
     

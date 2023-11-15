@@ -24,14 +24,13 @@ public class ConfigurarMesaControlador {
         this.vista = vista;
         this.hidratarLista();
     }
-    
-    
-        private void hidratarLista() {
+   
+    private void hidratarLista() {
         List<TipoApuesta> tipos = Fachada.getInstancia().getsTiposAp().getTipos();
         this.vista.hidratarLista(tipos);
     }
     
-        public void configurarMesa(List<TipoApuesta> tiposHabilitados){
+    public void configurarMesa(List<TipoApuesta> tiposHabilitados){
             crupier.configurarMesa(tiposHabilitados);
             this.vista.siguienteVentana(crupier);
         }

@@ -32,7 +32,6 @@ public class Crupier extends Usuario {
         Fachada.getInstancia().setDisponibles(); 
     }
     
- 
     
     public void lanzar(Efecto efecto){
         this.mesa.lanzar(efecto);
@@ -40,9 +39,6 @@ public class Crupier extends Usuario {
     
     public void liquidarPagos(){
         this.mesa.liquidarRonda();
-    }
-    
-  
-   
+    }   
    
 }

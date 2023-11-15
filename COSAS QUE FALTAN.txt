@@ -1,0 +1,5 @@
+COSAS QUE FALTAN:
+
+logOff
+desuscribir cuando se cierra algo
+acordars hacer la exception en el dominio si se apuesta algo no habilitado
