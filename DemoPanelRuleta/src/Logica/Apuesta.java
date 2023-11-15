@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import Excepciones.ApuestaInvalidaException;
 import java.util.List;
 
 /**
@@ -78,10 +79,12 @@ public class Apuesta {
         return totalAPagar;
     }
     
-    public void agregarFicha(Ficha ficha){
+    public void agregarFicha(Ficha ficha) throws ApuestaInvalidaException{
         if(ficha.getValor()<jugadorMesa.getJugador().getSaldo()){
             fichas.add(ficha);
             this.jugadorMesa.actualizarSaldo(-1*ficha.getValor());
+        } else {
+            throw new ApuestaInvalidaException("No tienes saldo suficiente");
         }
     }
 

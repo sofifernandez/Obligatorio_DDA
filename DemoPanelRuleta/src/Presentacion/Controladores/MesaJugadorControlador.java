@@ -4,6 +4,7 @@
  */
 package Presentacion.Controladores;
 
+import Excepciones.ApuestaInvalidaException;
 import Logica.JugadorMesa;
 import Logica.TipoApuesta;
 import Presentacion.Interfaces.MesaJugadorInterface;
@@ -68,15 +69,14 @@ public class MesaJugadorControlador implements Observador {
         this.vista.setTiposHabilitados(casilleros);
     }
     
-//    private void apostar(int cellCode, int valorFicha){
-//        try{
-//            this.jm.realizarApuesta(cellCode, valorFicha);
-//            this.vista.setApuesta();
-//        
-//        } catch{
-//        
-//        }
-//    }
+    private void setApuesta(int cellCode, int valorFicha){
+        try{
+            this.jm.realizarApuesta(cellCode, valorFicha);
+            this.vista.setApuesta(cellCode, valorFicha);
+        } catch (ApuestaInvalidaException e) {
+            this.vista.mostrarError(e.getMessage());
+        }
+    }
 
     @Override
     public void actualizar(Observable origen, Evento evento) {

@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import Excepciones.ApuestaInvalidaException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -62,8 +63,10 @@ public class JugadorMesa {
 //        this.nuevaApuesta(casillero, ficha, ronda);
 //    }
     
-        public void realizarApuesta(int cellCode, int valorFicha){
+        public void realizarApuesta(int cellCode, int valorFicha) throws ApuestaInvalidaException{
         Casillero casillero=this.getMesa().obtenerCasillero(cellCode);
+        if(casillero==null)
+            throw new ApuestaInvalidaException("Apuesta no habilitada");
         Ficha ficha=new Ficha(valorFicha);
         Ronda ronda= this.getMesa().rondaActual();
         for(Apuesta a: this.apuestas){
@@ -76,15 +79,15 @@ public class JugadorMesa {
      
     }
 
-    //private void nuevaApuesta(Casillero casillero, Ficha ficha, Ronda ronda) throws ApuestaInvalidaException{
-    private void nuevaApuesta(Casillero casillero, Ficha ficha, Ronda ronda) {
+    private void nuevaApuesta(Casillero casillero, Ficha ficha, Ronda ronda) throws ApuestaInvalidaException {
         List<Ficha> fichas = new ArrayList();
         Apuesta nuevaApuesta = new Apuesta(casillero, ronda, this, fichas);
         if(chequearRestriccionDocenas()){
-            System.out.println("no se puede apostar a mas de una docena por ronda.");
-            //throw new ApuestaInvalidaException("No se puede apostar a mas de una docena por ronda");
-            return; //acá excepciones!
+            //System.out.println("no se puede apostar a mas de una docena por ronda.");
+            throw new ApuestaInvalidaException("No se puede apostar a mas de una docena por ronda");
         }
+        //TODO
+        //if(chequearRestriccionColores) --> FALTA
         System.out.println("sigue");
         nuevaApuesta.agregarFicha(ficha);
         nuevaApuesta.getRonda().agregarApuesta(nuevaApuesta);

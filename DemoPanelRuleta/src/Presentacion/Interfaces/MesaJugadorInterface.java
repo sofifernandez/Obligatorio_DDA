@@ -29,5 +29,9 @@ public interface MesaJugadorInterface {
     public void setTiposHabilitados(List<Integer> casilleros);
 
     public void prepararMesa(int i);
+
+    public void setApuesta(int cellCode, int valorFicha);
+
+    public void mostrarError(String message);
     
 }

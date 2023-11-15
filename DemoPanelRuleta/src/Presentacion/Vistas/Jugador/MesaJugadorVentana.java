@@ -10,6 +10,7 @@ import Presentacion.Interfaces.MesaJugadorInterface;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -42,19 +43,18 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
         panelRuleta1 = new componente.PanelRuleta();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        txtSaldo = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        txtMesa = new javax.swing.JTextField();
-        txtRonda = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txtUsername = new javax.swing.JTextPane();
-        txtSorteado = new javax.swing.JTextField();
         ficha1 = new javax.swing.JButton();
         ficha5 = new javax.swing.JButton();
         ficha10 = new javax.swing.JButton();
         ficha50 = new javax.swing.JButton();
         ficha100 = new javax.swing.JButton();
+        lblSaldo = new javax.swing.JLabel();
+        lblMesa = new javax.swing.JLabel();
+        lblRonda = new javax.swing.JLabel();
+        lblUsername = new javax.swing.JLabel();
+        lblSorteado = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField2");
 
@@ -68,14 +68,6 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
         jLabel5.setText("MESA:");
 
         jLabel6.setText("RONDA:");
-
-        txtRonda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtRondaActionPerformed(evt);
-            }
-        });
-
-        jScrollPane1.setViewportView(txtUsername);
 
         ficha1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +99,8 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
             }
         });
 
+        lblSorteado.setBackground(new java.awt.Color(255, 153, 153));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -114,68 +108,79 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtRonda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(23, 23, 23))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(148, 148, 148)
-                                .addComponent(ficha1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(148, 148, 148)
+                                        .addComponent(ficha1))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
-                                .addComponent(ficha5)
-                                .addGap(26, 26, 26)
-                                .addComponent(ficha10)
-                                .addGap(18, 18, 18)
-                                .addComponent(ficha50)
-                                .addGap(18, 18, 18)
-                                .addComponent(ficha100)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(63, Short.MAX_VALUE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(ficha5)
+                                        .addGap(26, 26, 26)
+                                        .addComponent(ficha10)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(ficha50)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(ficha100)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                                        .addComponent(lblSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(150, 150, 150)
+                                                .addComponent(jLabel6)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(818, 818, 818)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(txtSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel6)
-                        .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtRonda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel6)
+                        .addGap(12, 12, 12)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel4)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(lblSaldo, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(ficha100, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ficha1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
                             .addComponent(ficha5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ficha10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ficha50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGap(18, 18, Short.MAX_VALUE)
+                            .addComponent(ficha50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblUsername)
+                        .addGap(47, 47, 47)
+                        .addComponent(lblSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
         );
@@ -234,10 +239,6 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
         
     }
     
-    private void txtRondaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRondaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRondaActionPerformed
-
     private void ficha1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ficha1ActionPerformed
         fichaSeleccionada=1;
     }//GEN-LAST:event_ficha1ActionPerformed
@@ -258,6 +259,9 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
         fichaSeleccionada=100;
     }//GEN-LAST:event_ficha100ActionPerformed
 
+    private void b_6ActionPerformed(java.awt.event.ActionEvent evt){
+        JOptionPane.showMessageDialog(this, "Hola soy el casillero 6");
+    }
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -269,40 +273,39 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JLabel lblMesa;
+    private javax.swing.JLabel lblRonda;
+    private javax.swing.JLabel lblSaldo;
+    private javax.swing.JLabel lblSorteado;
+    private javax.swing.JLabel lblUsername;
     private componente.PanelRuleta panelRuleta1;
-    private javax.swing.JTextField txtMesa;
-    private javax.swing.JTextField txtRonda;
-    private javax.swing.JTextField txtSaldo;
-    private javax.swing.JTextField txtSorteado;
-    private javax.swing.JTextPane txtUsername;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void actualizarSaldo(int saldo) {
-        txtSaldo.setText(""+saldo);
+        lblSaldo.setText(""+saldo);
     }
 
     @Override
     public void actualizarNumRonda(int idRonda) {
-        txtRonda.setText(""+idRonda);
+        lblRonda.setText(""+idRonda);
     }
 
     @Override
     public void actualizarNumMesa(int idMesa) {
-        txtMesa.setText(""+idMesa);
+        lblMesa.setText(""+idMesa);
     }
 
     @Override
     public void actualizarNumSorteado(int numeroSorteado) {
-        txtSorteado.setText(""+numeroSorteado);
+        lblSorteado.setText(""+numeroSorteado);
     }
 
     @Override
     public void setNombreJugador(String nombreCompleto) {
-        txtUsername.setText(nombreCompleto);
+        lblUsername.setText(nombreCompleto);
     }
 
     @Override
@@ -326,6 +329,16 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     @Override
     public void prepararMesa(int i) {
         panelRuleta1.setVisible(i, false);
+    }
+
+    @Override
+    public void setApuesta(int cellCode, int valorFicha) {
+        panelRuleta1.setApuesta(cellCode, valorFicha);
+    }
+
+    @Override
+    public void mostrarError(String message) {
+        JOptionPane.showMessageDialog(this, message);
     }
 
    
