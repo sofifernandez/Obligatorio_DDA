@@ -5,6 +5,7 @@
 package Servicios;
 
 import Logica.Crupier;
+import Logica.Efecto;
 import Logica.Jugador;
 import Logica.JugadorMesa;
 import Logica.Mesa;
@@ -21,6 +22,7 @@ public class Fachada extends Observable {
     private ServicioUsuarios sUsuarios;
     private ServicioMesas sMesas;
     private ServicioTiposApuesta sTiposAp;
+    private ServicioEfectos sEfectos;
 
     private static Fachada instancia;
     
@@ -29,6 +31,7 @@ public class Fachada extends Observable {
         //sCasilleros = new ServicioCasilleros();
         sMesas= new ServicioMesas();
         sTiposAp= new ServicioTiposApuesta();
+        sEfectos= new ServicioEfectos();
     }
 
     public static Fachada getInstancia() {
@@ -85,6 +88,18 @@ public class Fachada extends Observable {
 
     public List<TipoApuesta> getTipos() {
         return sTiposAp.getTipos();
+    }
+
+    public void agregar(Efecto efecto) {
+        sEfectos.agregar(efecto);
+    }
+
+    public void eliminar(Efecto efecto) {
+        sEfectos.eliminar(efecto);
+    }
+
+    public List<Efecto> getEfectos() {
+        return sEfectos.getEfectos();
     }
     
     

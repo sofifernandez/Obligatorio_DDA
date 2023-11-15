@@ -135,6 +135,10 @@ public class ObligatorioDDA {
         Efecto aleartorioParcial= new EfectoAleatorioParcial("PARCIAL");
         Efecto aleartorioSimulador= new EfectoSimulador("SIMULADOR");
         
+        f.agregar(aleartorioCompleto);
+        f.agregar(aleartorioParcial);
+        f.agregar(aleartorioSimulador);
+        
         //SORTEAR
         //cargarle mesa, configurar mesa, setear efecto, lanzar, pagar
 

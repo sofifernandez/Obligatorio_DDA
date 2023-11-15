@@ -35,5 +35,7 @@ public interface MesaJugadorInterface {
     public void mostrarError(String message);
 
     public void setBotonesCasilleros();
+
+    public void limpiarMesa();
     
 }

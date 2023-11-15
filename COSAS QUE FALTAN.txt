@@ -8,6 +8,8 @@ no poder iniciar sesion mas de una vez
 ojo, cuando cierro una mesa se cierra todo, no se puede salir con una apuesta a medio hacer
 
 
+
 SI DA TIEMPO
 chequear lo de la actualizaion del valor de la ficha en la vista
 hacer un panel padre y controlador padre
+excepcion para que seleccione moneda antes de apostar

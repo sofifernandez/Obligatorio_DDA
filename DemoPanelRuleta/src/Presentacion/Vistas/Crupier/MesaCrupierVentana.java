@@ -5,10 +5,15 @@
 package Presentacion.Vistas.Crupier;
 
 import Logica.Crupier;
+import Logica.Efecto;
 import Presentacion.Controladores.MesaCrupierControlador;
 import Presentacion.Interfaces.MesaCrupierInterface;
 import componente.PanelRuleta;
+import java.awt.Component;
 import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.ListCellRenderer;
 
 /**
  *
@@ -17,14 +22,15 @@ import java.util.List;
 public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupierInterface {
 
     private MesaCrupierControlador controlador;
+    //private boolean seLanzo;
     /**
      * Creates new form NewJFrame
      */
     public MesaCrupierVentana(Crupier crupier) {
         initComponents();
         controlador=new MesaCrupierControlador(crupier, this);
-       // prueba();
-        
+        comboEfectos.setRenderer(new EfectoRenderer());
+        //seLanzo=false;  
     }
 
     /**
@@ -93,6 +99,11 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
         btnLanzarPagar.setBackground(new java.awt.Color(204, 255, 153));
         btnLanzarPagar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnLanzarPagar.setText("Lanzar/Pagar");
+        btnLanzarPagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLanzarPagarActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("Últimos lanzamientos:");
 
@@ -223,6 +234,10 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnLanzarPagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLanzarPagarActionPerformed
+        controlador.lanzarPagar((Efecto) comboEfectos.getSelectedItem());
+    }//GEN-LAST:event_btnLanzarPagarActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -282,27 +297,45 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
         panelRuleta2.habilitar(i, true);
     }
     
-//    public void prueba(){
-//        panelRuleta2.setApuesta(5, 10);
-//    }
 
     @Override
     public void setApuesta(int codUniversal, int totalApostado) {
-         panelRuleta2.setApuesta(codUniversal, panelRuleta2.getApuesta(codUniversal)+totalApostado);
-        System.out.println("EN VISTA");
-        //panelRuleta2.setApuesta(5, 10);
-        
-        //panelRuleta1.setApuesta(codUniversal, panelRuleta1.getApuesta(codUniversal)+totalApostado);
-//        panelRuleta2.agregar(new PanelRuleta.Escuchador() {
-//                @Override
-//                public void celdaSeleccionada(int universalCellCode) {
-//                    //int apuesta = Integer.valueOf(jTextField1.getText());
-//                    //System.out.println("Id de celda seleccionada: " + universalCellCode + ". Apuesta anterior: " + panelRuleta1.getApuesta(universalCellCode) + ". Apuesta nueva:" + fichaSeleccionada);
-//                    //controlador.setApuesta(universalCellCode, fichaSeleccionada);
-//                    System.out.println("EN VISTA");
-//                    panelRuleta2.setApuesta(universalCellCode, panelRuleta2.getApuesta(codUniversal)+totalApostado);
-//                }                
-//            });
+         panelRuleta2.setApuesta(codUniversal, totalApostado);
+    }
+
+    @Override
+    public void actualizarTextoBoton(String titulo) {
+        btnLanzarPagar.setText(titulo);
+    }
+
+    @Override
+    public void hidratarListaEfectos(List<Efecto> efectos) {
+        for(Efecto e: efectos){
+            comboEfectos.addItem(e);
+        }
+    }
+
+    @Override
+    public void bloquearMesa() {
+        panelRuleta2.pausar();
+    }
+
+    @Override
+    public void desbloquearMesa() {
+        panelRuleta2.reanudar();
+    }
+
+    @Override
+    public void limpiarMesa() {
+        panelRuleta2.limpiar();
+    }
+    
+    private class EfectoRenderer extends JLabel implements ListCellRenderer<Efecto> {
+        @Override
+        public Component getListCellRendererComponent(JList list, Efecto efecto, int index, boolean isSelected, boolean cellHasFocus) {
+            this.setText(efecto.getNombre());
+            return this;
+        }
     }
     
    

@@ -19,22 +19,14 @@ public abstract class Efecto {
 
     public Efecto(String nombre) {
         this.nombre = nombre;
-        //rondas= new ArrayList();
+    }
+
+    public String getNombre() {
+        return nombre;
     }
     
+    
     public abstract int sortear(Ronda ronda);
-    
-//    public Ronda getRonda() {
-//        return ronda;
-//    }
-//
-//    public void setRonda(Ronda ronda) {
-//        this.ronda = ronda;
-//    }
-    
-//    public void agregarRonda(Ronda ronda){
-//        rondas.add(ronda);
-//    }
-    
+
    
 }

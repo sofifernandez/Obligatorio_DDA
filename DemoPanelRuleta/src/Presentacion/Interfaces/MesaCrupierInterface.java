@@ -4,6 +4,7 @@
  */
 package Presentacion.Interfaces;
 
+import Logica.Efecto;
 import java.util.List;
 
 /**
@@ -23,5 +24,15 @@ public interface MesaCrupierInterface {
     public void setTiposHabilitados(List<Integer> casilleros);
 
     public void setApuesta(int codUniversal, int totalApostado);
+
+    public void actualizarTextoBoton(String titulo);
+
+    public void hidratarListaEfectos(List<Efecto> efectos);
+
+    public void bloquearMesa();
+
+    public void desbloquearMesa();
+
+    public void limpiarMesa();
     
 }

@@ -27,12 +27,10 @@ public class ServicioMesas {
 
     public void agregar(Mesa mesa) {
         mesas.add(mesa);
-        Fachada.getInstancia().notificar(Observador.Evento.LISTADO_MESAS_MODIFICADO);
     }
     
     public void eliminar (Mesa mesa){
         mesas.remove(mesa);
-        Fachada.getInstancia().notificar(Observador.Evento.LISTADO_MESAS_MODIFICADO);
     }
     
     public List<Mesa> obtenerMesasDisponibles(){
@@ -40,7 +38,6 @@ public class ServicioMesas {
         for(Mesa m: mesas){
             if(m.esDisponible()) mesasDisponibles.add(m);
         } 
-        //Fachada.getInstancia().notificar(Observador.Evento.LISTADO_MESAS_MODIFICADO);
         return mesasDisponibles;
     }
     

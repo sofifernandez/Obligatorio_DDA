@@ -4,8 +4,7 @@
  */
 package Logica;
 
-import Utilitarios.Observable;
-import Utilitarios.Observador;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,22 +17,14 @@ public class Ronda {
     private Efecto efecto;
     private int numeroSorteado;
     private int numeroRonda;
-    //agrego la mesa
     private Mesa mesa;
     
     public Ronda(int numeroRonda, Mesa mesa) {
         this.numeroRonda=numeroRonda;
         this.mesa=mesa;
         this.apuestas=new ArrayList();
-        //this.numeroSorteado=this.sortear();
     }
 
-//    public Ronda(int numeroRonda, Efecto efecto, Mesa mesa) {
-//        this.numeroRonda=numeroRonda;
-//        this.efecto=efecto;
-//        this.mesa=mesa;
-//        //this.numeroSorteado=this.sortear();
-//    }
     
     public void setEfecto(Efecto efecto) {
         this.efecto = efecto;
@@ -77,7 +68,6 @@ public class Ronda {
     
     public void sortear(){
         this.setNumeroSorteado(this.efecto.sortear(this));
-        //mandar evento a suscriptores.
     }
     
     public List<Integer> ultimosResultados(int x){
@@ -145,7 +135,16 @@ public class Ronda {
 
     public void agregarApuesta(Apuesta apuesta) {
         this.apuestas.add(apuesta);
-        //mandar evento a los suscriptores (observers)
+    }
+
+    public int totalApuestasEnCasillero(int i) {
+        int total=0;
+        for (Apuesta a: apuestas){
+            if(a.getCasillero().getCodUniversal()==i){
+                total+=a.totalApostado();
+            }
+        }
+        return total;
     }
 
     

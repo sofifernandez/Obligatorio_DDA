@@ -60,9 +60,6 @@ public class MesaJugadorControlador implements Observador {
         this.vista.bloquearMesa();
     }
     
-    private void desbloquearMesa(){
-        this.vista.desbloquearMesa();
-    }
     
     private void setTiposHabilitados(){
         List<TipoApuesta> todosTipos= Fachada.getInstancia().getTipos();
@@ -79,7 +76,6 @@ public class MesaJugadorControlador implements Observador {
     public void setApuesta(int cellCode, int valorFicha){
         try{
             this.jm.realizarApuesta(cellCode, valorFicha);
-            //this.vista.setApuesta(cellCode, valorFicha);
         } catch (ApuestaInvalidaException e) {
             this.vista.mostrarError(e.getMessage());
         }
@@ -88,11 +84,13 @@ public class MesaJugadorControlador implements Observador {
     @Override
     public void actualizar(Observable origen, Evento evento) {
         if (evento.equals(Observador.Evento.SORTEO_REALIZADO)) {
+            actualizarDatosMesa();
             bloquearMesa();
         } 
         if (evento.equals(Observador.Evento.DATOS_MESA_ACTUALIZADOS)) {
             actualizarDatosMesa();
-            desbloquearMesa();
+            this.vista.limpiarMesa();
+            this.vista.desbloquearMesa();
         } 
     }
     

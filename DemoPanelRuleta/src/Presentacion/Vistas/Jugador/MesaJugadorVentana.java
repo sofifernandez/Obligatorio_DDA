@@ -349,12 +349,15 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
                panelRuleta1.agregar(new PanelRuleta.Escuchador() {
                 @Override
                 public void celdaSeleccionada(int universalCellCode) {
-                    //int apuesta = Integer.valueOf(jTextField1.getText());
-                    //System.out.println("Id de celda seleccionada: " + universalCellCode + ". Apuesta anterior: " + panelRuleta1.getApuesta(universalCellCode) + ". Apuesta nueva:" + fichaSeleccionada);
                     controlador.setApuesta(universalCellCode, fichaSeleccionada);
                     panelRuleta1.setApuesta(universalCellCode, fichaSeleccionada+ panelRuleta1.getApuesta(universalCellCode));
                 }                
             });
+    }
+
+    @Override
+    public void limpiarMesa() {
+        panelRuleta1.limpiar();
     }
     
    
