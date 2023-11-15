@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import Utilitarios.Observador;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class Jugador extends Usuario {
   
     public void actualizarSaldo(int x){
         this.setSaldo(this.saldo + x);
+        this.notificar(Observador.Evento.DATOS_MESA_ACTUALIZADOS);
     }
     
 }

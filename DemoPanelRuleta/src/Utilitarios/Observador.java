@@ -17,7 +17,7 @@ public interface Observador {
         DATOS_MESA_ACTUALIZADOS,
    
         
-        APUESTAS_MODIFICADAS
+        APUESTA_ACTUALIZADA
     }
     public void actualizar(Observable origen, Evento evento);
 }

@@ -47,6 +47,15 @@ public class Mesa extends Observable {
         this.rondas = rondas;
     }
 
+    public List<JugadorMesa> getJugadoresMesa() {
+        return jugadoresMesa;
+    }
+
+    public void setJugadoresMesa(List<JugadorMesa> jugadoresMesa) {
+        this.jugadoresMesa = jugadoresMesa;
+    }
+
+    
     public int getBalance() {
         return balance;
     }
@@ -140,7 +149,7 @@ public class Mesa extends Observable {
         setBalance(getBalance()+balanceRonda);
     }
     
-        public void agregarJugadorMesa(JugadorMesa jugador){
+    public void agregarJugadorMesa(JugadorMesa jugador){
         this.jugadoresMesa.add(jugador);
         this.notificar(Observador.Evento.LISTADO_JUGADORES_MODIFICADO);
     }
@@ -172,6 +181,16 @@ public class Mesa extends Observable {
             }
         }
         return null;
+    }
+    
+    public List<Apuesta> getApuestasRondaActual(){
+        Ronda rondaActual= rondaActual();
+        return rondaActual.getApuestas();
+    }
+    
+    public void apuestaActualizada(){
+        System.out.println("EVENTO EN MESAAAAAAAAA");
+        this.notificar(Observador.Evento.APUESTA_ACTUALIZADA);
     }
     
 }

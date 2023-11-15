@@ -134,8 +134,6 @@ public class ConfigurarMesaVentana extends javax.swing.JFrame implements Configu
     }
     
     public void configurarMesa(){
-        //habilitados=jList1.getSelectedValuesList();
-        //int[] prueba=jList1.getSelectedIndices();
         controlador.configurarMesa(habilitados);
         //JOptionPane.showMessageDialog(this, habilitados);
     }
@@ -143,7 +141,8 @@ public class ConfigurarMesaVentana extends javax.swing.JFrame implements Configu
     
     @Override
     public void siguienteVentana(Crupier crupier){
-        //JOptionPane.showMessageDialog(this, "HOLA MUNDO");
+        new MesaCrupierVentana(crupier).setVisible(true);
+        this.disable();
 }
     
     private class TiposRenderer extends JPanel  implements ListCellRenderer<TipoApuesta> {

@@ -5,6 +5,8 @@
 package Logica;
 
 import Excepciones.ApuestaInvalidaException;
+import Utilitarios.Observable;
+import Utilitarios.Observador;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -13,7 +15,7 @@ import java.util.Objects;
  *
  * @author sofia
  */
-public class JugadorMesa {
+public class JugadorMesa extends Observable {
     
     private Jugador jugador;
     private Mesa mesa;
@@ -50,7 +52,7 @@ public class JugadorMesa {
     }
     
     public void actualizarSaldo(int x){
-        this.jugador.actualizarSaldo(x);
+        this.jugador.actualizarSaldo(x);        
     }
     
 //    public void realizarApuesta(Casillero casillero, Ficha ficha, Ronda ronda){
@@ -72,6 +74,7 @@ public class JugadorMesa {
         for(Apuesta a: this.apuestas){
             if(a.getCasillero().equals(casillero) && a.getRonda().equals(ronda)){
                 a.agregarFicha(ficha);
+                ronda.apuestaActualizada();
                 return;
             }
         }
@@ -88,10 +91,10 @@ public class JugadorMesa {
         }
         //TODO
         //if(chequearRestriccionColores) --> FALTA
-        System.out.println("sigue");
         nuevaApuesta.agregarFicha(ficha);
         nuevaApuesta.getRonda().agregarApuesta(nuevaApuesta);
         this.apuestas.add(nuevaApuesta);
+        ronda.apuestaActualizada();
     }
     
 //    private boolean chequearRestriccionColores(Ronda ronda){

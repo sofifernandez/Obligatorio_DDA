@@ -7,6 +7,8 @@ package Presentacion.Vistas.Jugador;
 import Logica.JugadorMesa;
 import Presentacion.Controladores.MesaJugadorControlador;
 import Presentacion.Interfaces.MesaJugadorInterface;
+import componente.PanelRuleta;
+import componente.PanelRuleta.Escuchador;
 import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -109,8 +111,10 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(818, 818, 818)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -144,11 +148,9 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(lblRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addContainerGap(35, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(818, 818, 818)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))))
+                                        .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,9 +182,9 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
                         .addComponent(lblUsername)
                         .addGap(47, 47, 47)
                         .addComponent(lblSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
                 .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         pack();
@@ -259,9 +261,7 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
         fichaSeleccionada=100;
     }//GEN-LAST:event_ficha100ActionPerformed
 
-    private void b_6ActionPerformed(java.awt.event.ActionEvent evt){
-        JOptionPane.showMessageDialog(this, "Hola soy el casillero 6");
-    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -286,6 +286,7 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     @Override
     public void actualizarSaldo(int saldo) {
         lblSaldo.setText(""+saldo);
+        
     }
 
     @Override
@@ -327,8 +328,10 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     }
 
     @Override
-    public void prepararMesa(int i) {
+    public void setCasilleros(int i) {
         panelRuleta1.setVisible(i, false);
+       // panelRuleta1.habilitar(i, true);
+
     }
 
     @Override
@@ -340,6 +343,23 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     public void mostrarError(String message) {
         JOptionPane.showMessageDialog(this, message);
     }
+
+    @Override
+    public void setBotonesCasilleros() {
+               panelRuleta1.agregar(new PanelRuleta.Escuchador() {
+                @Override
+                public void celdaSeleccionada(int universalCellCode) {
+                    //int apuesta = Integer.valueOf(jTextField1.getText());
+                    //System.out.println("Id de celda seleccionada: " + universalCellCode + ". Apuesta anterior: " + panelRuleta1.getApuesta(universalCellCode) + ". Apuesta nueva:" + fichaSeleccionada);
+                    controlador.setApuesta(universalCellCode, fichaSeleccionada);
+                    panelRuleta1.setApuesta(universalCellCode, fichaSeleccionada+ panelRuleta1.getApuesta(universalCellCode));
+                }                
+            });
+    }
+    
+   
+
+    
 
    
 }

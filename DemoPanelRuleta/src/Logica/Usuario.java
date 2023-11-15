@@ -4,13 +4,14 @@
  */
 package Logica;
 
+import Utilitarios.Observable;
 import java.util.Objects;
 
 /**
  *
  * @author sofia
  */
-public abstract class Usuario {
+public abstract class Usuario extends Observable {
     private String cedula;
     private String password;
     private String nombreCompleto;

@@ -151,12 +151,12 @@ public class ObligatorioDDA {
         
         //1) Login exitoso, agregarle mesa
         c1.setMesa(mesa1);
-        c3.setMesa(mesa2);
+        c2.setMesa(mesa2);
         //2) En la ventana para configurar la mesa
                 // traer tipos de apuesta desde servicio
                 
 //        List<TipoApuesta> tiposHabilitados =new ArrayList<>();
-//        tiposHabilitados.add(tipoDocena);
+//        tiposHabilitados.add(tipoDirecto);
 //        tiposHabilitados.add(tipoColor);
 //        c1.configurarMesa(tiposHabilitados);
 //        c2.configurarMesa(tiposHabilitados);

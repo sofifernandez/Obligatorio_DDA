@@ -4,6 +4,8 @@
  */
 package Logica;
 
+import Utilitarios.Observable;
+import Utilitarios.Observador;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,6 +111,10 @@ public class Ronda {
             perdidas+=a.pagarGanador(this.getNumeroSorteado());
         }
         return ganancias-perdidas;
+    }
+    
+    public void apuestaActualizada(){
+        this.getMesa().apuestaActualizada();
     }
     
      @Override

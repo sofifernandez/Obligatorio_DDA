@@ -83,9 +83,15 @@ public class Apuesta {
         if(ficha.getValor()<jugadorMesa.getJugador().getSaldo()){
             fichas.add(ficha);
             this.jugadorMesa.actualizarSaldo(-1*ficha.getValor());
+            //this.getRonda().apuestaActualizada();
         } else {
             throw new ApuestaInvalidaException("No tienes saldo suficiente");
         }
+    }
+    
+    public int ultimaFichaApostada(){
+        int ultimaPosicion= this.getFichas().size()-1;
+        return this.getFichas().get(ultimaPosicion).getValor();
     }
 
     @Override

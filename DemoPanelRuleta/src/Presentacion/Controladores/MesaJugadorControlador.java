@@ -26,16 +26,23 @@ public class MesaJugadorControlador implements Observador {
     public MesaJugadorControlador(JugadorMesa jm, MesaJugadorInterface vista) {
         this.jm = jm;
         this.vista = vista;
-        this.prepararMesa();
+        this.setCasilleros();
+        this.setBotonesCasilleros();
         this.setTiposHabilitados();
         this.actualizarDatosMesa();
         this.setNombreJugador();
+        jm.getJugador().suscribir(this);
+        jm.getMesa().suscribir(this);
     }
     
-    private void prepararMesa(){
+    private void setCasilleros(){
         for(int i=0; i<51;i++){
-            this.vista.prepararMesa(i);
+            this.vista.setCasilleros(i);
         }
+    }
+    
+    private void setBotonesCasilleros(){
+        this.vista.setBotonesCasilleros();
     }
     
     private void actualizarDatosMesa(){
@@ -69,10 +76,10 @@ public class MesaJugadorControlador implements Observador {
         this.vista.setTiposHabilitados(casilleros);
     }
     
-    private void setApuesta(int cellCode, int valorFicha){
+    public void setApuesta(int cellCode, int valorFicha){
         try{
             this.jm.realizarApuesta(cellCode, valorFicha);
-            this.vista.setApuesta(cellCode, valorFicha);
+            //this.vista.setApuesta(cellCode, valorFicha);
         } catch (ApuestaInvalidaException e) {
             this.vista.mostrarError(e.getMessage());
         }

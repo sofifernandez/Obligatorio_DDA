@@ -1815,9 +1815,7 @@ public class PanelRuleta extends javax.swing.JPanel {
     }
 
     public interface Escuchador {
-
         public void celdaSeleccionada(int universalCellCode);
-
     }
 
 }
