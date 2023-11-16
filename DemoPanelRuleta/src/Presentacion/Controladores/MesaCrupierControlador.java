@@ -38,6 +38,7 @@ public class MesaCrupierControlador implements Observador {
         this.vista.actualizarTextoBoton("Lanzar");
         this.hidratarListaEfectos();
         crupier.getMesa().suscribir(this);
+        this.vista.bloquearBotonCerrar();
         datosTabla="";
     }
 
@@ -117,10 +118,12 @@ public class MesaCrupierControlador implements Observador {
         if (!seLanzo) {
             crupier.lanzar(efecto);
             this.vista.actualizarTextoBoton("Pagar");
+            this.vista.desbloquearBotonCerrar();
         } else {
             crupier.liquidarPagos();
             popularTabla(crupier.getMesa().getIdRonda()-1);
             this.vista.actualizarTextoBoton("Lanzar");
+            this.vista.bloquearBotonCerrar();
         }
         seLanzo = !seLanzo;
     }
@@ -128,6 +131,18 @@ public class MesaCrupierControlador implements Observador {
     private void hidratarListaEfectos() {
         List<Efecto> efectos = Fachada.getInstancia().getEfectos();
         this.vista.hidratarListaEfectos(efectos);
+    }
+    
+    public void cerrarMesa(){
+        if(this.vista.mensajeConfirmacion("Está seguro de que desea salir?") == 0){
+            crupier.liquidarPagos();
+            crupier.cerrarMesa();
+            crupier.getMesa().desuscribir(this);
+            Fachada.getInstancia().logout(crupier);
+            this.vista.cerrar();
+        }
+        
+        
     }
     
 

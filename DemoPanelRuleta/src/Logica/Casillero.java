@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import Excepciones.ApuestaInvalidaException;
 import java.util.List;
 
 /**
@@ -19,6 +20,10 @@ public class Casillero {
         this.codUniversal = codUniversal;
         this.numerosAsociados = numerosAsociados;
         this.tipo=tipo;
+    }
+    
+    public void validarApuesta(Ronda ronda, Apuesta apuesta) throws ApuestaInvalidaException{
+        this.tipo.validarApuesta(ronda, apuesta);
     }
     
     public boolean contieneValor(int x){

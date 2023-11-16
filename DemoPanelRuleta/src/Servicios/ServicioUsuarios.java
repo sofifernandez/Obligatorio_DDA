@@ -4,6 +4,8 @@
  */
 package Servicios;
 
+import Excepciones.SesionYaIniciadaException;
+import Excepciones.UsuarioInvalidoException;
 import Logica.Crupier;
 import Logica.Jugador;
 import Logica.Usuario;
@@ -33,21 +35,30 @@ public class ServicioUsuarios {
         crupiers.add(crupier);
     }
     
-    public Jugador loginJugador(String cedula, String password) {
+    public Jugador loginJugador(String cedula, String password) throws UsuarioInvalidoException, SesionYaIniciadaException {
         return (Jugador) login(cedula, password, (List) jugadores);
     }
     
-    public Crupier loginCrupier(String cedula, String password) {
+    public Crupier loginCrupier(String cedula, String password) throws UsuarioInvalidoException, SesionYaIniciadaException {
         return (Crupier) login(cedula, password, (List) crupiers);
     }
     
-    private Usuario login(String cedula, String password, List<Usuario> listaUsuarios) {
+    private Usuario login(String cedula, String password, List<Usuario> listaUsuarios) throws UsuarioInvalidoException, SesionYaIniciadaException {
         for (Usuario u : listaUsuarios) {
-            if (u.isCedulaAndPassword(cedula, password)) {
+            if (u.isCedulaAndPassword(cedula, password)&& !u.isSesionIniciada()) {
+                u.setSesionIniciada(true);
                 return u;
             }
+            
+            if (u.isCedulaAndPassword(cedula, password)&& u.isSesionIniciada()) {
+                throw new SesionYaIniciadaException("Ya has iniciado sesión");
+            }
         }
-        return null;
+        throw new UsuarioInvalidoException("Credenciales inválidas");
+    }
+    
+    public void logout(Usuario usuario){
+        usuario.setSesionIniciada(false);
     }
     
 

@@ -4,6 +4,8 @@
  */
 package Logica;
 
+import Excepciones.SesionYaIniciadaException;
+import Excepciones.UsuarioInvalidoException;
 import Utilitarios.Observable;
 import java.util.Objects;
 
@@ -46,13 +48,33 @@ public abstract class Usuario extends Observable {
     public void setNombreCompleto(String nombreCompleto) {
         this.nombreCompleto = nombreCompleto;
     }
+
+    public boolean isSesionIniciada() {
+        return sesionIniciada;
+    }
+
+    public void setSesionIniciada(boolean sesionIniciada) {
+        this.sesionIniciada = sesionIniciada;
+    }
+    
+    
     
     public boolean isCedulaAndPassword(String cedula,String password) {
         return cedula!=null && password!=null && 
                 this.password.equals(password) && 
                 this.cedula.equals(cedula);
     }
-
+    
+    
+//    public boolean validarInicioSesion(String cedula,String password) throws UsuarioInvalidoException, SesionYaIniciadaException{
+//        if(!isCedulaAndPassword(cedula, password))
+//            throw new UsuarioInvalidoException("Credenciales inválidas");
+//        if(isCedulaAndPassword(cedula, password) && this.isSesionIniciada())
+//            throw new SesionYaIniciadaException("Ya has iniciado sesión");
+//        this.setSesionIniciada(true);
+//        return true;
+//    }
+//    
     @Override
     public int hashCode() {
         int hash = 7;

@@ -32,10 +32,14 @@ public interface MesaJugadorInterface {
 
     public void setApuesta(int cellCode, int valorFicha);
 
-    public void mostrarError(String message);
+    public void mostrarMensaje(String message);
 
     public void setBotonesCasilleros();
 
     public void limpiarMesa();
+
+    public int mensajeConfirmacion(String mensaje);
+
+    public void cerrar();
     
 }

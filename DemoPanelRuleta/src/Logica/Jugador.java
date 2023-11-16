@@ -33,15 +33,27 @@ public class Jugador extends Usuario {
     public JugadorMesa unirseAMesa(Mesa mesa) throws MesaInvalidaException{
         if(mesa==null)
             throw new MesaInvalidaException("Selecciona una mesa");
+        if(!mesa.esDisponible())
+            throw new MesaInvalidaException("La mesa no esta disponible");
         JugadorMesa nuevoJuego= new JugadorMesa(this, mesa);
-        if(saldo>0){
-            jugadorMesas.add(nuevoJuego);
-            return nuevoJuego;
+        if(yaExisteJugadorMesa(nuevoJuego)){
+            throw new MesaInvalidaException("Ya participas de esta mesa");
         }
         if(saldo<=0){
             throw new MesaInvalidaException("No tienes saldo suficiente");
         }
-        return null;
+        
+        jugadorMesas.add(nuevoJuego);
+        return nuevoJuego;
+    }
+    
+    private boolean yaExisteJugadorMesa(JugadorMesa jm){
+        List<JugadorMesa> jugadoresDeLaMesa= jm.getMesa().getJugadoresMesa();
+        for(JugadorMesa j: jugadoresDeLaMesa){
+            if(j.equals(jm))
+                return true;
+        }
+        return false;
     }
   
     public void actualizarSaldo(int x){

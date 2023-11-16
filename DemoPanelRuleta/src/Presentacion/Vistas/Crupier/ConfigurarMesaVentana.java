@@ -129,20 +129,18 @@ public class ConfigurarMesaVentana extends javax.swing.JFrame implements Configu
     @Override
     public void hidratarLista(List<TipoApuesta> tipos){
         jList1.setListData(tipos.toArray());
-        jList1.setSelectedIndex(0);
-        
+        jList1.setSelectedIndex(0);        
     }
     
     public void configurarMesa(){
         controlador.configurarMesa(habilitados);
-        //JOptionPane.showMessageDialog(this, habilitados);
     }
     
     
     @Override
     public void siguienteVentana(Crupier crupier){
         new MesaCrupierVentana(crupier).setVisible(true);
-        this.disable();
+        dispose();
 }
     
     private class TiposRenderer extends JPanel  implements ListCellRenderer<TipoApuesta> {
@@ -168,6 +166,10 @@ public class ConfigurarMesaVentana extends javax.swing.JFrame implements Configu
         setEnabled(list.isEnabled());
         setComponentOrientation(list.getComponentOrientation());
         setFont(list.getFont());
+        if(tipos.getNombre()=="DIRECTA"){
+            checkBox.setEnabled(false);
+            checkBox.setSelected(true);
+        }
         return this;  
         }
         

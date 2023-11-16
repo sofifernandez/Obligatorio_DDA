@@ -79,6 +79,9 @@ public class Apuesta {
         return totalAPagar;
     }
     
+    public boolean esApuestaGanadora(){
+        return this.casillero.contieneValor(this.getRonda().getNumeroSorteado());
+    }
     
     
     public int perdidas(int numeroSorteado){
@@ -107,15 +110,26 @@ public class Apuesta {
         return this.getFichas().get(ultimaPosicion).getValor();
     }
 
+    
+    public boolean esDocena(){
+        return this.casillero.getCodUniversal()>=40 && this.casillero.getCodUniversal()<=42;
+    }
+    
+    public boolean noEsCero(){
+        return esRojo()|| esNegro();
+    }
+    
+    public boolean esRojo(){
+        return this.casillero.getCodUniversal()==43;
+    }
+    
+    public boolean esNegro(){
+        return this.casillero.getCodUniversal()==44;
+    }
+   
     @Override
     public String toString() {
         return "Apuesta{" + "casillero=" + casillero + ", jugadorMesa=" + jugadorMesa + '}';
     }
-    
-    public boolean esDocenaDeJugador(){
-        return this.casillero.getCodUniversal()>=40 && this.casillero.getCodUniversal()<=42;
-    }
-   
-    
     
 }

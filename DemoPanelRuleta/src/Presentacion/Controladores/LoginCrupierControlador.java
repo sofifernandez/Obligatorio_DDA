@@ -4,9 +4,13 @@
  */
 package Presentacion.Controladores;
 
+import Excepciones.SesionYaIniciadaException;
+import Excepciones.UsuarioInvalidoException;
 import Logica.Usuario;
 import Presentacion.Interfaces.LoginVistaInterface;
 import Servicios.Fachada;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,7 +26,12 @@ public class LoginCrupierControlador extends LoginControlador {
 
     @Override
     protected Usuario login(String usuario, String password) {
-        return Fachada.getInstancia().loginCrupier(usuario, password);
+        try {
+            return Fachada.getInstancia().loginCrupier(usuario, password);
+        } catch (UsuarioInvalidoException | SesionYaIniciadaException ex ) {
+            this.getVista().mostrarError(ex.getMessage());
+        } 
+        return null;
     }
 
     @Override

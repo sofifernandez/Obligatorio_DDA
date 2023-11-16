@@ -53,6 +53,14 @@ public class MesasDisponiblesVentana extends javax.swing.JFrame implements Mesas
         listMesasDisponibles = new javax.swing.JList();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Mesas abiertas");
@@ -66,7 +74,7 @@ public class MesasDisponiblesVentana extends javax.swing.JFrame implements Mesas
         });
 
         btnLogOff.setBackground(new java.awt.Color(255, 102, 102));
-        btnLogOff.setText("Log Off");
+        btnLogOff.setText("Log Out");
         btnLogOff.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnLogOffActionPerformed(evt);
@@ -120,12 +128,21 @@ public class MesasDisponiblesVentana extends javax.swing.JFrame implements Mesas
     }//GEN-LAST:event_btnUnirseActionPerformed
 
     private void btnLogOffActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOffActionPerformed
-        // TODO add your handling code here:
+        controlador.logout();
+        
     }//GEN-LAST:event_btnLogOffActionPerformed
 
     private void listMesasDisponiblesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listMesasDisponiblesValueChanged
         mesaSeleccionada = (Mesa) listMesasDisponibles.getSelectedValue();
     }//GEN-LAST:event_listMesasDisponiblesValueChanged
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        //dispose();
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        controlador.logoutDirecto();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -158,6 +175,16 @@ public class MesasDisponiblesVentana extends javax.swing.JFrame implements Mesas
     public void mostrarError(String message) {
         JOptionPane.showMessageDialog(this, message);
     
+    }
+
+    @Override
+    public int mensajeConfirmacion(String mensaje) {
+        return JOptionPane.showConfirmDialog(this, mensaje,"Confirmar disp ventana",JOptionPane.YES_NO_OPTION);
+    }
+
+    @Override
+    public void cerrar() {
+        dispose();
     }
 
     

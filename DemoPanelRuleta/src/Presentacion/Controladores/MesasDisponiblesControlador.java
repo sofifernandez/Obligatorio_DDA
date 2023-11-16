@@ -30,19 +30,35 @@ public class MesasDisponiblesControlador implements Observador {
         this.hidratarLista();
         Fachada.getInstancia().suscribir(this);
         
+        
     }
     
      public void unirseMesa(Mesa mesa) {
          try{JugadorMesa jm = this.jugador.unirseAMesa(mesa);
          Fachada.getInstancia().agregarJugadorMesaAMesa(jm, mesa);
-         this.vista.siguienteVentana(jm);}
+         this.vista.siguienteVentana(jm);
+         
+         }
          catch (MesaInvalidaException e){
              this.vista.mostrarError(e.getMessage());
          }
+        
          
      }
      
+    public void logout() {
+        if(this.vista.mensajeConfirmacion("Estás seguro que desea salir?") == 0) {
+            Fachada.getInstancia().logout(jugador);
+            Fachada.getInstancia().desuscribir(this);
+            this.vista.cerrar();
+        }
+    }
     
+    public void logoutDirecto(){
+        Fachada.getInstancia().logout(jugador);
+        Fachada.getInstancia().desuscribir(this);
+        this.vista.cerrar();
+    }
     
     private void hidratarLista() {
         List<Mesa> mesas = Fachada.getInstancia().obtenerMesasDisponibles();
@@ -53,7 +69,9 @@ public class MesasDisponiblesControlador implements Observador {
     public void actualizar(Observable origen, Evento evento) {
          if (evento.equals(Observador.Evento.LISTADO_MESAS_MODIFICADO)) {
             hidratarLista();
-         }         
+         }
+
+            
     }
 
     

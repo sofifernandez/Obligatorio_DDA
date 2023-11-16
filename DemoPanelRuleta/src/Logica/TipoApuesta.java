@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import Excepciones.ApuestaInvalidaException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -75,6 +76,8 @@ public abstract class TipoApuesta {
         }
         return casillero;
     }
+    
+    public abstract void validarApuesta(Ronda rondaActual, Apuesta apuesta)throws ApuestaInvalidaException;
 
     @Override
     public int hashCode() {

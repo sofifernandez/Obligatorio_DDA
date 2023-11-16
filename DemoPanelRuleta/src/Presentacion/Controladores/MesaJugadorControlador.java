@@ -19,7 +19,7 @@ import java.util.List;
  * @author sofia
  */
 public class MesaJugadorControlador implements Observador {
-    
+
     private JugadorMesa jm;
     private MesaJugadorInterface vista;
 
@@ -34,63 +34,69 @@ public class MesaJugadorControlador implements Observador {
         jm.getJugador().suscribir(this);
         jm.getMesa().suscribir(this);
     }
-    
-    private void setCasilleros(){
-        for(int i=0; i<51;i++){
+
+    private void setCasilleros() {
+        for (int i = 0; i < 51; i++) {
             this.vista.setCasilleros(i);
         }
     }
-    
-    private void setBotonesCasilleros(){
+
+    private void setBotonesCasilleros() {
         this.vista.setBotonesCasilleros();
     }
-    
-    private void actualizarDatosMesa(){
-      this.vista.actualizarSaldo(jm.getJugador().getSaldo());
-      this.vista.actualizarNumRonda(jm.getMesa().getIdRonda());
-      this.vista.actualizarNumMesa(jm.getMesa().getIdMesa());
-      this.actualizarNumSorteado();
+
+    private void actualizarDatosMesa() {
+        this.vista.actualizarSaldo(jm.getJugador().getSaldo());
+        this.vista.actualizarNumRonda(jm.getMesa().getIdRonda());
+        this.vista.actualizarNumMesa(jm.getMesa().getIdMesa());
+        this.actualizarNumSorteado();
     }
-    
-    private void actualizarNumSorteado(){
+
+    private void actualizarNumSorteado() {
         int numSorteado = jm.getMesa().rondaActual().getNumeroSorteado();
-        if(numSorteado>=0){
-            this.vista.actualizarNumSorteado(jm.getMesa().rondaActual().getNumeroSorteado()+"");
-        } else{
+        if (numSorteado >= 0) {
+            this.vista.actualizarNumSorteado(jm.getMesa().rondaActual().getNumeroSorteado() + "");
+        } else {
             this.vista.actualizarNumSorteado("-");
         }
     }
-    
-    private void setNombreJugador(){
+
+    private void setNombreJugador() {
         this.vista.setNombreJugador(jm.getJugador().getNombreCompleto());
     }
-    
-    private void bloquearMesa(){
+
+    private void bloquearMesa() {
         this.vista.bloquearMesa();
     }
-    
-    private void setTiposHabilitados(){
-        List<TipoApuesta> todosTipos= Fachada.getInstancia().getTipos();
-        List<TipoApuesta> tiposHabilitados=jm.getMesa().getTiposApuestas();
-        List<Integer> casilleros= new ArrayList();
-        for(TipoApuesta tip:todosTipos){
-            if(tiposHabilitados.contains(tip)){
+
+    private void setTiposHabilitados() {
+        List<TipoApuesta> todosTipos = Fachada.getInstancia().getTipos();
+        List<TipoApuesta> tiposHabilitados = jm.getMesa().getTiposApuestas();
+        List<Integer> casilleros = new ArrayList();
+        for (TipoApuesta tip : todosTipos) {
+            if (tiposHabilitados.contains(tip)) {
                 casilleros.addAll(tip.getCellCodes());
             }
         }
         this.vista.setTiposHabilitados(casilleros);
     }
-    
-    public void setApuesta(int cellCode, int valorFicha){
-        try{
+
+    public void setApuesta(int cellCode, int valorFicha) {
+        try {
             this.jm.realizarApuesta(cellCode, valorFicha);
         } catch (ApuestaInvalidaException e) {
-            this.vista.mostrarError(e.getMessage());
+            this.vista.mostrarMensaje(e.getMessage());
         }
     }
-    
-    public void abandonarMesa(){
-        jm.getMesa().borrarJugadorMesa(jm);
+
+    public void abandonarMesa() {
+        if (this.vista.mensajeConfirmacion("Está seguro de que desea salir?") == 0) {
+            jm.getMesa().borrarJugadorMesa(jm);
+            jm.getJugador().desuscribir(this);
+            jm.getMesa().desuscribir(this);
+            this.vista.cerrar();
+        }
+
     }
 
     @Override
@@ -99,12 +105,16 @@ public class MesaJugadorControlador implements Observador {
             actualizarDatosMesa();
             bloquearMesa();
             this.vista.limpiarMesa();
-        } 
+        }
         if (evento.equals(Observador.Evento.DATOS_MESA_ACTUALIZADOS)) {
             actualizarDatosMesa();
             this.vista.desbloquearMesa();
-        } 
+        }
+
+        if (evento.equals(Observador.Evento.MESA_CERRADA)) {
+            this.vista.mostrarMensaje("El croupier ha cerrado la mesa");
+            this.vista.cerrar();
+        }
     }
-    
-    
+
 }

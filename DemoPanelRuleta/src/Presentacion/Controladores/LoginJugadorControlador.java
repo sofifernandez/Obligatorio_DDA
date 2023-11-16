@@ -4,6 +4,8 @@
  */
 package Presentacion.Controladores;
 
+import Excepciones.SesionYaIniciadaException;
+import Excepciones.UsuarioInvalidoException;
 import Logica.Usuario;
 import Presentacion.Interfaces.LoginVistaInterface;
 import Servicios.Fachada;
@@ -21,7 +23,16 @@ public class LoginJugadorControlador extends LoginControlador{
     
     @Override
     protected Usuario login(String usuario, String password) {
-        return Fachada.getInstancia().loginJugador(usuario, password);
+        try{ 
+            Usuario u= Fachada.getInstancia().loginJugador(usuario, password); 
+            return u;
+        
+       } catch (UsuarioInvalidoException | SesionYaIniciadaException ex ) {
+            this.getVista().mostrarError(ex.getMessage());
+        } 
+        
+        return null;
+            
     }
 
     @Override

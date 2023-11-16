@@ -1,11 +1,6 @@
 COSAS QUE FALTAN:
 
-logOut
-desuscribir cuando se cierra algo
-que por defecto quede la apuesta directa configurada
-no poder iniciar sesion mas de una vez
 no se por que el limpiarMesa en jugador no funciona como queremos
 LISTAS EN LAS MESAS
-cerrar mesa en crupier
-excepcion de docenas
-
+astaaah
+autoevaluacion

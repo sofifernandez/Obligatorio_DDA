@@ -50,5 +50,4 @@ public class ServicioMesas {
         mesa.agregarJugadorMesa(jugador);
     }
     
-    //FALTA ELIMINAR, DE CUANDO SE CIERRA UNA MESA
 }

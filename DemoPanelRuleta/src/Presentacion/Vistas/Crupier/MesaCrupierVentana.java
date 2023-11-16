@@ -14,6 +14,7 @@ import java.awt.Component;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListCellRenderer;
 
 /**
@@ -95,6 +96,11 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
 
         btnCerrarMesa.setBackground(new java.awt.Color(255, 153, 153));
         btnCerrarMesa.setText("Cerrar mesa");
+        btnCerrarMesa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarMesaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Apuestas:");
@@ -263,6 +269,10 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
         controlador.lanzarPagar((Efecto) comboEfectos.getSelectedItem());
     }//GEN-LAST:event_btnLanzarPagarActionPerformed
 
+    private void btnCerrarMesaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarMesaActionPerformed
+        controlador.cerrarMesa();
+    }//GEN-LAST:event_btnCerrarMesaActionPerformed
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -386,6 +396,25 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
     @Override
     public void popularTabla(List<String> textos) {
         listEstadisticas.setListData(textos.toArray());
+    }
+
+    @Override
+    public void desbloquearBotonCerrar() {
+        btnCerrarMesa.setEnabled(true);}
+
+    @Override
+    public void bloquearBotonCerrar() {
+        btnCerrarMesa.setEnabled(false);
+    }
+
+    @Override
+    public int mensajeConfirmacion(String mensaje) {
+        return JOptionPane.showConfirmDialog(this, mensaje,"Confirmar CRUPIER",JOptionPane.YES_NO_OPTION);
+    }
+
+    @Override
+    public void cerrar() {
+        dispose();
     }
     
     

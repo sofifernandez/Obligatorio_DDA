@@ -19,4 +19,8 @@ public interface MesasDisponiblesInterface {
     public void siguienteVentana(JugadorMesa jm);
 
     public void mostrarError(String message);
+
+    public int mensajeConfirmacion(String está_seguro_de_que_desea_salir);
+
+    public void cerrar();
 }

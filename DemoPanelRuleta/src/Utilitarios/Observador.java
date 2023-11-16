@@ -15,6 +15,7 @@ public interface Observador {
         LISTADO_JUGADORES_MODIFICADO,
         SORTEO_REALIZADO,
         DATOS_MESA_ACTUALIZADOS,
+        MESA_CERRADA,
    
         
         APUESTA_ACTUALIZADA

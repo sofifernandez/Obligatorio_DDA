@@ -49,5 +49,13 @@ public interface MesaCrupierInterface {
     public void popularTabla(List<String> textos);
 
     //public void popularTabla(List<String> textos);
+
+    public void desbloquearBotonCerrar();
+
+    public void bloquearBotonCerrar();
+
+    public int mensajeConfirmacion(String está_seguro_de_que_desea_salir);
+
+    public void cerrar();
     
 }

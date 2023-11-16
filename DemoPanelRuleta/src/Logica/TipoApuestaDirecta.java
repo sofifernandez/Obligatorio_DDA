@@ -15,5 +15,9 @@ public class TipoApuestaDirecta extends TipoApuesta{
     public TipoApuestaDirecta(int factorDePago, String nombre) {
         super(factorDePago, nombre);
     }
+
+    @Override
+    public void validarApuesta(Ronda rondaActual, Apuesta apuesta) {
+    }
     
 }

@@ -4,12 +4,15 @@
  */
 package Servicios;
 
+import Excepciones.SesionYaIniciadaException;
+import Excepciones.UsuarioInvalidoException;
 import Logica.Crupier;
 import Logica.Efecto;
 import Logica.Jugador;
 import Logica.JugadorMesa;
 import Logica.Mesa;
 import Logica.TipoApuesta;
+import Logica.Usuario;
 import Utilitarios.Observable;
 import java.util.List;
 
@@ -50,11 +53,11 @@ public class Fachada extends Observable {
         sUsuarios.agregar(crupier);
     }
 
-    public Jugador loginJugador(String cedula, String password) {
+    public Jugador loginJugador(String cedula, String password) throws UsuarioInvalidoException, SesionYaIniciadaException {
         return sUsuarios.loginJugador(cedula, password);
     }
 
-    public Crupier loginCrupier(String cedula, String password) {
+    public Crupier loginCrupier(String cedula, String password) throws UsuarioInvalidoException, SesionYaIniciadaException {
         return sUsuarios.loginCrupier(cedula, password);
     }
     
@@ -100,6 +103,10 @@ public class Fachada extends Observable {
 
     public List<Efecto> getEfectos() {
         return sEfectos.getEfectos();
+    }
+
+    public void logout(Usuario usuario) {
+        sUsuarios.logout(usuario);
     }
     
     

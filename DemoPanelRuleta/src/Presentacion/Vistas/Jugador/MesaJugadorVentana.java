@@ -62,6 +62,11 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
         jTextField2.setText("jTextField2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 20));
@@ -284,8 +289,11 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
 
     private void btnAbandonarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbandonarActionPerformed
         controlador.abandonarMesa();
-        dispose();
     }//GEN-LAST:event_btnAbandonarActionPerformed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        
+    }//GEN-LAST:event_formWindowClosed
 
 
 
@@ -367,7 +375,7 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     }
 
     @Override
-    public void mostrarError(String message) {
+    public void mostrarMensaje(String message) {
         JOptionPane.showMessageDialog(this, message);
     }
 
@@ -385,6 +393,16 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     @Override
     public void limpiarMesa() {
         panelRuleta1.limpiar();
+    }
+
+    @Override
+    public int mensajeConfirmacion(String mensaje) {
+       return JOptionPane.showConfirmDialog(this, mensaje,"Confirmar",JOptionPane.YES_NO_OPTION);
+    }
+
+    @Override
+    public void cerrar() {
+        dispose();
     }
     
    

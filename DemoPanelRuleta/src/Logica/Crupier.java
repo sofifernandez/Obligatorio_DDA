@@ -32,6 +32,12 @@ public class Crupier extends Usuario {
         Fachada.getInstancia().setDisponibles(); 
     }
     
+    public void cerrarMesa(){
+        getMesa().setDisponible(false);
+        getMesa().borrarTodosLosJugadores();
+        Fachada.getInstancia().setDisponibles(); 
+    }
+    
     
     public void lanzar(Efecto efecto){
         this.mesa.lanzar(efecto);

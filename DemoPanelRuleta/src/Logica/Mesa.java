@@ -192,7 +192,7 @@ public class Mesa extends Observable {
 
     public void setDisponible(boolean b) {
         this.disponible = b;
-        this.notificar(Observador.Evento.LISTADO_MESAS_MODIFICADO);
+        //this.notificar(Observador.Evento.LISTADO_MESAS_MODIFICADO);
     }
     
     public List<Jugador> obtenerJugadores(){
@@ -201,6 +201,11 @@ public class Mesa extends Observable {
             jugadores.add(jm.getJugador());
         }
         return jugadores;
+    }
+    
+    public void borrarTodosLosJugadores(){
+        jugadoresMesa.clear();
+        this.notificar(Observador.Evento.MESA_CERRADA);
     }
 
     @Override

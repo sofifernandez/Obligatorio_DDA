@@ -7,6 +7,7 @@ package Logica;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -165,11 +166,9 @@ public class Ronda {
         return total;
     }
 
-    
-    
     @Override
     public int hashCode() {
-        int hash = 7;
+        int hash = 5;
         return hash;
     }
 
@@ -185,8 +184,15 @@ public class Ronda {
             return false;
         }
         final Ronda other = (Ronda) obj;
-        return this.numeroRonda == other.numeroRonda;
+        if (this.numeroRonda != other.numeroRonda) {
+            return false;
+        }
+        return Objects.equals(this.mesa, other.mesa);
     }
+
+    
+    
+    
     
     
     

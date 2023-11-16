@@ -26,13 +26,10 @@ public abstract class LoginControlador {
         
     public void usuarioIntentaIngresar(String userName, String password) {
         Usuario usuario = this.login(userName, password);
-        if(usuario == null) {
-            this.vista.mostrarError("Login incorrecto.");
-        } else  {
+        if(usuario != null) {
             this.ejecutarProximoCasoDeUso(usuario);
             this.vista.cerrar();
-        }
-
+        } 
     }
     
     protected abstract Usuario login(String usuario, String password);
