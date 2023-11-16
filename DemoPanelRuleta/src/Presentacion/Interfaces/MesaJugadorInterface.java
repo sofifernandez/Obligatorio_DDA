@@ -18,7 +18,7 @@ public interface MesaJugadorInterface {
 
     public void actualizarNumMesa(int idMesa);
 
-    public void actualizarNumSorteado(int numeroSorteado);
+    public void actualizarNumSorteado(String numeroSorteado);
 
     public void setNombreJugador(String nombreCompleto);
 

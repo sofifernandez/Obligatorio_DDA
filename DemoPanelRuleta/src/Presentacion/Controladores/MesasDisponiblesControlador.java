@@ -4,6 +4,7 @@
  */
 package Presentacion.Controladores;
 
+import Excepciones.MesaInvalidaException;
 import Logica.Jugador;
 import Logica.JugadorMesa;
 import Logica.Mesa;
@@ -32,9 +33,13 @@ public class MesasDisponiblesControlador implements Observador {
     }
     
      public void unirseMesa(Mesa mesa) {
-         JugadorMesa jm = this.jugador.unirseAMesa(mesa);
+         try{JugadorMesa jm = this.jugador.unirseAMesa(mesa);
          Fachada.getInstancia().agregarJugadorMesaAMesa(jm, mesa);
-         this.vista.siguienteVentana(jm);
+         this.vista.siguienteVentana(jm);}
+         catch (MesaInvalidaException e){
+             this.vista.mostrarError(e.getMessage());
+         }
+         
      }
      
     

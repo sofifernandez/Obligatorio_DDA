@@ -17,4 +17,6 @@ public interface MesasDisponiblesInterface {
     public void hidratarLista(List<Mesa> mesas);
     
     public void siguienteVentana(JugadorMesa jm);
+
+    public void mostrarError(String message);
 }

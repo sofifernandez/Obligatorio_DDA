@@ -49,7 +49,16 @@ public class MesaJugadorControlador implements Observador {
       this.vista.actualizarSaldo(jm.getJugador().getSaldo());
       this.vista.actualizarNumRonda(jm.getMesa().getIdRonda());
       this.vista.actualizarNumMesa(jm.getMesa().getIdMesa());
-      this.vista.actualizarNumSorteado(jm.getMesa().rondaActual().getNumeroSorteado());
+      this.actualizarNumSorteado();
+    }
+    
+    private void actualizarNumSorteado(){
+        int numSorteado = jm.getMesa().rondaActual().getNumeroSorteado();
+        if(numSorteado>=0){
+            this.vista.actualizarNumSorteado(jm.getMesa().rondaActual().getNumeroSorteado()+"");
+        } else{
+            this.vista.actualizarNumSorteado("-");
+        }
     }
     
     private void setNombreJugador(){
@@ -59,7 +68,6 @@ public class MesaJugadorControlador implements Observador {
     private void bloquearMesa(){
         this.vista.bloquearMesa();
     }
-    
     
     private void setTiposHabilitados(){
         List<TipoApuesta> todosTipos= Fachada.getInstancia().getTipos();
@@ -80,16 +88,20 @@ public class MesaJugadorControlador implements Observador {
             this.vista.mostrarError(e.getMessage());
         }
     }
+    
+    public void abandonarMesa(){
+        jm.getMesa().borrarJugadorMesa(jm);
+    }
 
     @Override
     public void actualizar(Observable origen, Evento evento) {
         if (evento.equals(Observador.Evento.SORTEO_REALIZADO)) {
             actualizarDatosMesa();
             bloquearMesa();
+            this.vista.limpiarMesa();
         } 
         if (evento.equals(Observador.Evento.DATOS_MESA_ACTUALIZADOS)) {
             actualizarDatosMesa();
-            this.vista.limpiarMesa();
             this.vista.desbloquearMesa();
         } 
     }

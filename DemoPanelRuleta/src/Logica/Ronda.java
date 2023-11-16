@@ -23,6 +23,7 @@ public class Ronda {
         this.numeroRonda=numeroRonda;
         this.mesa=mesa;
         this.apuestas=new ArrayList();
+        numeroSorteado=-1;
     }
 
     
@@ -33,7 +34,9 @@ public class Ronda {
     public List<Apuesta> getApuestas() {
         return apuestas;
     }
+    
 
+    
     public int getNumeroSorteado() {
         return numeroSorteado;
     }
@@ -45,6 +48,9 @@ public class Ronda {
     public int getNumeroRonda() {
         return numeroRonda;
     }
+
+    
+    
 
     public void setNumeroRonda(int numeroRonda) {
         this.numeroRonda = numeroRonda;
@@ -103,15 +109,64 @@ public class Ronda {
         return ganancias-perdidas;
     }
     
+    public int totalApostado(){
+        int total=0;
+        for(Apuesta a: apuestas){
+            total+=a.totalApostado();
+        }
+        return total;
+    }
+    
+    public int totalPago(){
+        int perdidas=0;
+        for(Apuesta a: apuestas){
+            perdidas+=a.perdidas(this.getNumeroSorteado());
+        }
+        return perdidas;
+    }
+    
+    public int balanceFinal(){
+        int recoleccion=this.montoTotalApuestas();
+        int liquidacion=this.totalPago();
+        return recoleccion-liquidacion;
+    }
+    
     public void apuestaActualizada(){
         this.getMesa().apuestaActualizada();
     }
+    
+    public int montoTotalApuestas(){
+        int total=0;
+        for(Apuesta a: apuestas){
+            total+=a.totalApostado();
+        }
+        return total;
+    }
+    
     
      @Override
     public String toString() {
         return "Ronda{" + "apuestas=" + apuestas + ", numeroSorteado=" + numeroSorteado + ", numeroRonda=" + numeroRonda + '}';
     }
 
+    
+
+    public void agregarApuesta(Apuesta apuesta) {
+        this.apuestas.add(apuesta);
+    }
+
+    public int totalApuestasEnCasillero(int i) {
+        int total=0;
+        for (Apuesta a: apuestas){
+            if(a.getCasillero().getCodUniversal()==i){
+                total+=a.totalApostado();
+            }
+        }
+        return total;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -132,21 +187,6 @@ public class Ronda {
         final Ronda other = (Ronda) obj;
         return this.numeroRonda == other.numeroRonda;
     }
-
-    public void agregarApuesta(Apuesta apuesta) {
-        this.apuestas.add(apuesta);
-    }
-
-    public int totalApuestasEnCasillero(int i) {
-        int total=0;
-        for (Apuesta a: apuestas){
-            if(a.getCasillero().getCodUniversal()==i){
-                total+=a.totalApostado();
-            }
-        }
-        return total;
-    }
-
     
     
     

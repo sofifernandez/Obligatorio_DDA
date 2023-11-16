@@ -4,6 +4,7 @@
  */
 package Logica;
 
+import Excepciones.MesaInvalidaException;
 import Utilitarios.Observador;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +30,16 @@ public class Jugador extends Usuario {
         this.saldo = saldo;
     }
     
-    public JugadorMesa unirseAMesa(Mesa mesa){
+    public JugadorMesa unirseAMesa(Mesa mesa) throws MesaInvalidaException{
+        if(mesa==null)
+            throw new MesaInvalidaException("Selecciona una mesa");
         JugadorMesa nuevoJuego= new JugadorMesa(this, mesa);
         if(saldo>0){
             jugadorMesas.add(nuevoJuego);
-            
             return nuevoJuego;
+        }
+        if(saldo<=0){
+            throw new MesaInvalidaException("No tienes saldo suficiente");
         }
         return null;
     }

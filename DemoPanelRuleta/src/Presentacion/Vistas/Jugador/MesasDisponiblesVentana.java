@@ -154,6 +154,12 @@ public class MesasDisponiblesVentana extends javax.swing.JFrame implements Mesas
         //JOptionPane.showMessageDialog(this, "HOLA MUNDO" + jm.getMesa());
     }
 
+    @Override
+    public void mostrarError(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    
+    }
+
     
     
     private class MesasRenderer extends JLabel implements ListCellRenderer<Mesa> {

@@ -6,6 +6,7 @@ package Presentacion.Vistas.Crupier;
 
 import Logica.Crupier;
 import Logica.Efecto;
+import Logica.Jugador;
 import Presentacion.Controladores.MesaCrupierControlador;
 import Presentacion.Interfaces.MesaCrupierInterface;
 import componente.PanelRuleta;
@@ -22,15 +23,13 @@ import javax.swing.ListCellRenderer;
 public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupierInterface {
 
     private MesaCrupierControlador controlador;
-    //private boolean seLanzo;
-    /**
-     * Creates new form NewJFrame
-     */
+    
     public MesaCrupierVentana(Crupier crupier) {
         initComponents();
         controlador=new MesaCrupierControlador(crupier, this);
         comboEfectos.setRenderer(new EfectoRenderer());
-        //seLanzo=false;  
+        listJugadores.setCellRenderer(new JugadoresRenderer());
+
     }
 
     /**
@@ -64,9 +63,11 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
         lblSorteado = new javax.swing.JLabel();
         lblUltimosLanz = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listEstadisticas = new javax.swing.JList();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
+        listJugadores = new javax.swing.JList();
+        jLabel8 = new javax.swing.JLabel();
+        lblUltimos = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -83,17 +84,22 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("BALANCE:");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("RONDA:");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("MESA:");
 
         btnCerrarMesa.setBackground(new java.awt.Color(255, 153, 153));
         btnCerrarMesa.setText("Cerrar mesa");
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("Apuestas:");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Monto:");
 
         btnLanzarPagar.setBackground(new java.awt.Color(204, 255, 153));
@@ -105,23 +111,33 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
             }
         });
 
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Últimos lanzamientos:");
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Efecto:");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        lblBalance.setText("dd");
 
-        jList2.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane5.setViewportView(jList2);
+        lblMesa.setText("d");
+
+        lblRonda.setText("d");
+
+        lblApuesta.setText("d");
+
+        lblMonto.setText("d");
+
+        lblSorteado.setBackground(new java.awt.Color(255, 255, 204));
+        lblSorteado.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+
+        jScrollPane1.setViewportView(listEstadisticas);
+
+        jScrollPane5.setViewportView(listJugadores);
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setText("JUGADORES");
+
+        lblUltimos.setText("jLabel9");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -132,27 +148,25 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(89, 89, 89)
-                                .addComponent(jScrollPane5))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(panelRuleta2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(panelRuleta2, javax.swing.GroupLayout.DEFAULT_SIZE, 995, Short.MAX_VALUE)
                                 .addComponent(jSeparator1)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addGap(60, 60, 60)
+                                            .addGap(1, 1, 1)
+                                            .addComponent(jLabel1)
+                                            .addGap(18, 18, 18)
                                             .addComponent(lblBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel3))
                                         .addGroup(layout.createSequentialGroup()
                                             .addComponent(jLabel4)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(lblApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(29, 29, 29)
+                                            .addGap(23, 23, 23)
                                             .addComponent(jLabel5)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGap(18, 18, 18)
                                             .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(layout.createSequentialGroup()
@@ -163,21 +177,33 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
                                             .addGap(131, 131, 131)
                                             .addComponent(btnLanzarPagar))
                                         .addGroup(layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGap(18, 18, 18)
                                             .addComponent(lblMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(50, 50, 50)
+                                            .addGap(38, 38, 38)
                                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                             .addComponent(lblRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(lblUltimosLanz, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblUltimosLanz, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(lblUltimos, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(205, 205, 205)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(89, 89, 89)
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 514, Short.MAX_VALUE)))))
                         .addGap(34, 34, 34)
                         .addComponent(lblSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 757, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCerrarMesa)))
                 .addGap(21, 21, 21))
         );
@@ -186,35 +212,32 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnCerrarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(lblMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(4, 4, 4))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(btnCerrarMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel1)
+                                    .addComponent(lblBalance, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 6, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5)
-                            .addComponent(comboEfectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnLanzarPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel7)
-                            .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(lblApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
+                            .addComponent(jLabel3)
+                            .addComponent(lblMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2)
+                            .addComponent(lblRonda, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5)
+                    .addComponent(comboEfectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLanzarPagar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(lblMonto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblApuesta, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,12 +246,14 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(lblUltimosLanz))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 197, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1))
-                .addGap(0, 6, Short.MAX_VALUE))
+                    .addComponent(lblUltimosLanz)
+                    .addComponent(lblUltimos)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 118, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,8 +276,7 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
@@ -264,7 +288,10 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
     private javax.swing.JLabel lblMonto;
     private javax.swing.JLabel lblRonda;
     private javax.swing.JLabel lblSorteado;
+    private javax.swing.JLabel lblUltimos;
     private javax.swing.JLabel lblUltimosLanz;
+    private javax.swing.JList listEstadisticas;
+    private javax.swing.JList listJugadores;
     private componente.PanelRuleta panelRuleta2;
     // End of variables declaration//GEN-END:variables
 
@@ -273,6 +300,7 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
     public void actualizarNumRonda(int idRonda) {
         lblRonda.setText(""+idRonda);
     }
+    
 
     @Override
     public void actualizarNumMesa(int idMesa) {
@@ -280,7 +308,7 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
     }
 
     @Override
-    public void actualizarNumSorteado(int numeroSorteado) {
+    public void actualizarNumSorteado(String numeroSorteado) {
         lblSorteado.setText(""+numeroSorteado);
     }
     
@@ -329,6 +357,39 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
     public void limpiarMesa() {
         panelRuleta2.limpiar();
     }
+
+    @Override
+    public void actualizarJugadores(List<Jugador> jugadores) {
+        listJugadores.setListData(jugadores.toArray());
+    }
+
+    @Override
+    public void actualizarBalance(int balance) {
+        lblBalance.setText(balance+"");
+    }
+
+    @Override
+    public void actualizarNumApuestas(int apuestas) {
+        lblApuesta.setText(apuestas+"");
+    }
+
+    @Override
+    public void actualizarMontoApuestas(int montoTotalApuestas) {
+        lblMonto.setText(montoTotalApuestas+"");
+    }
+
+    @Override
+    public void actualizarUltimosLanzamientos(String ultimosResultadosString) {
+        lblUltimos.setText(ultimosResultadosString);
+    }
+
+    @Override
+    public void popularTabla(List<String> textos) {
+        listEstadisticas.setListData(textos.toArray());
+    }
+    
+    
+    
     
     private class EfectoRenderer extends JLabel implements ListCellRenderer<Efecto> {
         @Override
@@ -337,6 +398,15 @@ public class MesaCrupierVentana extends javax.swing.JFrame implements MesaCrupie
             return this;
         }
     }
+    
+    private class JugadoresRenderer extends JLabel implements ListCellRenderer<Jugador> {
+        @Override
+        public Component getListCellRendererComponent(JList list, Jugador jugador, int index, boolean isSelected, boolean cellHasFocus) {
+            this.setText(jugador.getNombreCompleto() + " -- " + jugador.getSaldo());
+            return this;
+        }
+    }
+       
     
    
 }

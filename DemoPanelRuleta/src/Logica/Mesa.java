@@ -113,13 +113,22 @@ public class Mesa extends Observable {
         this.notificar(Observador.Evento.SORTEO_REALIZADO);
     }
     
+    public Ronda obtenerRondaConID(int ID){
+        for(Ronda r:rondas){
+            if(r.getNumeroRonda()==ID){
+                return r;
+            }
+        }
+        return null;
+    }
+    
     
     public void liquidarRonda(){
         Ronda ultimaRonda= this.rondaActual();
         int balanceRonda= ultimaRonda.liquidar();
         this.actualizarBalance(balanceRonda);
-        this.notificar(Observador.Evento.DATOS_MESA_ACTUALIZADOS);
         this.nuevaRonda();
+        this.notificar(Observador.Evento.DATOS_MESA_ACTUALIZADOS);
     }
     
     public List<Integer> ultimosResultados(int x){
@@ -135,6 +144,24 @@ public class Mesa extends Observable {
         }
         return ultimosResultados;
     }
+    
+    public String ultimosResultadosString(){
+        String texto="";
+        for (Ronda r: this.getRondas()){
+            if(r.getNumeroSorteado()>=0)
+            texto= texto + " | " + r.getNumeroSorteado();
+        }
+        return texto;
+    }
+    
+    public String extraerDatosUltimaRonda(){
+        String texto="";
+        texto= rondaActual().getNumeroRonda()+ " " +
+                getBalance()+" " ;
+        return texto;
+    }
+    
+
     
     public Ronda rondaActual(){
         for(Ronda r: this.rondas){
@@ -167,6 +194,14 @@ public class Mesa extends Observable {
         this.disponible = b;
         this.notificar(Observador.Evento.LISTADO_MESAS_MODIFICADO);
     }
+    
+    public List<Jugador> obtenerJugadores(){
+        List<Jugador> jugadores= new ArrayList();
+        for(JugadorMesa jm: jugadoresMesa){
+            jugadores.add(jm.getJugador());
+        }
+        return jugadores;
+    }
 
     @Override
     public String toString() {
@@ -189,7 +224,6 @@ public class Mesa extends Observable {
     }
     
     public void apuestaActualizada(){
-        System.out.println("EVENTO EN MESAAAAAAAAA");
         this.notificar(Observador.Evento.APUESTA_ACTUALIZADA);
     }
     

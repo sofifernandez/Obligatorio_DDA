@@ -5,6 +5,7 @@
 package Presentacion.Interfaces;
 
 import Logica.Efecto;
+import Logica.Jugador;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public interface MesaCrupierInterface {
 
     public void actualizarNumMesa(int idMesa);
 
-    public void actualizarNumSorteado(int numeroSorteado);
+    public void actualizarNumSorteado(String numeroSorteado);
 
     public void setTiposHabilitados(List<Integer> casilleros);
 
@@ -34,5 +35,19 @@ public interface MesaCrupierInterface {
     public void desbloquearMesa();
 
     public void limpiarMesa();
+
+    public void actualizarJugadores(List<Jugador> jugadores);
+
+    public void actualizarBalance(int balance);
+
+    public void actualizarNumApuestas(int size);
+
+    public void actualizarMontoApuestas(int montoTotalApuestas);
+
+    public void actualizarUltimosLanzamientos(String ultimosResultadosString);
+    
+    public void popularTabla(List<String> textos);
+
+    //public void popularTabla(List<String> textos);
     
 }

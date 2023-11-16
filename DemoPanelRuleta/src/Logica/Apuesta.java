@@ -79,6 +79,19 @@ public class Apuesta {
         return totalAPagar;
     }
     
+    
+    
+    public int perdidas(int numeroSorteado){
+        int totalApostado = this.totalApostado();
+        int totalAPagar=0;
+        if(this.casillero.contieneValor(numeroSorteado)){ //Los que ganaron en la apuesta
+            int factorPago = this.casillero.getTipo().getFactorDePago();
+            totalAPagar=totalApostado*factorPago;
+        }
+        return totalAPagar;
+    }
+    
+    
     public void agregarFicha(Ficha ficha) throws ApuestaInvalidaException{
         if(ficha.getValor()<jugadorMesa.getJugador().getSaldo()){
             fichas.add(ficha);
