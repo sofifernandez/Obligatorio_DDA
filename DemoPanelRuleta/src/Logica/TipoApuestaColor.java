@@ -5,43 +5,42 @@
 package Logica;
 
 import Excepciones.ApuestaInvalidaException;
-import java.util.List;
-
 /**
  *
  * @author lucas
  */
-public class TipoApuestaColor extends TipoApuesta{
-    
+public class TipoApuestaColor extends TipoApuesta {
+
     public TipoApuestaColor(int factorDePago, String nombre) {
         super(factorDePago, nombre);
     }
 
     @Override
-    public void validarApuesta(Ronda rondaActual, Apuesta apuesta) throws ApuestaInvalidaException {
-        JugadorMesa jm= apuesta.getJugadorMesa();
-        Ronda ronda= apuesta.getRonda();
-        if(chequearRestriccionColores(jm, apuesta)){
+    public void validarApuesta( Apuesta apuesta) throws ApuestaInvalidaException {
+        JugadorMesa jm = apuesta.getJugadorMesa();
+        if (chequearRestriccionColores(jm, apuesta)) {
             throw new ApuestaInvalidaException("No se puede Martingalear");
         }
     }
-    
-    
-    private boolean chequearRestriccionColores(JugadorMesa jm,Apuesta apuesta) {
+
+    private boolean chequearRestriccionColores(JugadorMesa jm, Apuesta apuesta) {
         Ronda rondaActual = apuesta.getRonda();
         int idRondaAnterior = rondaActual.getNumeroRonda() - 1;
-        Ronda rondaAnterior = jm.getMesa().obtenerRondaConID(idRondaAnterior);
-        if (noSeAplicaRestriccion(rondaAnterior, jm)) {
-            return false;
-        }
-        if (apuesta.esNegro()) {
-            if (martingalaNegros(rondaAnterior, apuesta)) {
-                return true;
+        if (idRondaAnterior > 0) {
+            Ronda rondaAnterior = jm.getMesa().obtenerRondaConID(idRondaAnterior);
+            if (noSeAplicaRestriccion(rondaAnterior, jm)) {
+                return false;
             }
-        }
-        if (apuesta.esRojo()) {
-            if (martingalaRojos(rondaAnterior, apuesta)) {
-                return true;
+
+            if (apuesta.esNegro()) {
+                if (martingalaNegros(rondaAnterior, apuesta)) {
+                    return true;
+                }
+            }
+            if (apuesta.esRojo()) {
+                if (martingalaRojos(rondaAnterior, apuesta)) {
+                    return true;
+                }
             }
         }
         return false;
@@ -72,8 +71,11 @@ public class TipoApuestaColor extends TipoApuesta{
         }
         return false;
     }
-    
+
     private boolean noSeAplicaRestriccion(Ronda ronda, JugadorMesa jm) {
+        if (1 == ronda.getNumeroRonda()) {
+            return true;
+        }
         boolean salioCeroAnterior = ronda.getNumeroSorteado() == 0;
         boolean seApostoRojo = false;
         boolean seApostoNegro = false;

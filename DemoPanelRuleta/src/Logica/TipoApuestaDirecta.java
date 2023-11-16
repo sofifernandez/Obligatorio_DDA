@@ -17,7 +17,7 @@ public class TipoApuestaDirecta extends TipoApuesta{
     }
 
     @Override
-    public void validarApuesta(Ronda rondaActual, Apuesta apuesta) {
+    public void validarApuesta( Apuesta apuesta) {
     }
     
 }

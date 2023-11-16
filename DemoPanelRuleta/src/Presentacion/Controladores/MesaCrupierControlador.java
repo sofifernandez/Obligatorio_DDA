@@ -85,21 +85,38 @@ public class MesaCrupierControlador implements Observador {
     }
     
     private void popularTabla(int idAnterior){
-        List<String> textos=new ArrayList();
-        for(int i=1; i<=idAnterior;i++){
-            Ronda r= crupier.getMesa().obtenerRondaConID(i);
-            int balanceAnterior= crupier.getMesa().getBalance()-r.balanceFinal();
-            String idRonda= "Ronda: " + i;
+         
+//        List<String> textos=new ArrayList();
+//        for(int i=1; i<=idAnterior;i++){
+//            Ronda r= crupier.getMesa().obtenerRondaConID(i);
+//            int balanceAnterior = crupier.getMesa().getBalance() - r.balanceFinal();
+//            String idRonda= "Ronda: " + i;
+//            String espacio=" ";
+//            String balanceAnt="Balance anterior: "+balanceAnterior; 
+//            String numAp="Apuestas: "+ r.getApuestas().size();
+//            String recoleccion="Recolección: "+ r.totalApostado();
+//            String liquidacion= "Liquidacion " +r.totalPago();
+//            String balanceAct="Balance posterior: "+r.balanceFinal();
+//            String textoCompleto=idRonda+espacio+balanceAnt+espacio+numAp+espacio+recoleccion+espacio+liquidacion+espacio+balanceAct;
+//            textos.add(textoCompleto);
+//        }
+        
+            Ronda r= crupier.getMesa().obtenerRondaConID(idAnterior);
+            int balanceAnterior = crupier.getMesa().getBalance() - r.balanceFinal();
+            String idRonda= "Ronda: " + idAnterior;
             String espacio=" ";
             String balanceAnt="Balance anterior: "+balanceAnterior; 
             String numAp="Apuestas: "+ r.getApuestas().size();
             String recoleccion="Recolección: "+ r.totalApostado();
             String liquidacion= "Liquidacion " +r.totalPago();
             String balanceAct="Balance posterior: "+r.balanceFinal();
-            String textoCompleto=idRonda+espacio+balanceAnt+espacio+numAp+espacio+recoleccion+espacio+liquidacion+espacio+balanceAct;
-            textos.add(textoCompleto);
-        }
-        this.vista.popularTabla(textos);
+            String textoCompleto=idRonda+espacio+balanceAnt+espacio+numAp+espacio+recoleccion+espacio+liquidacion+espacio+balanceAct+ "\n";
+            //textos.add(textoCompleto);
+            
+            datosTabla += textoCompleto;
+        
+        
+            this.vista.popularTabla(datosTabla);
     }
     
     private void setTiposHabilitados() {

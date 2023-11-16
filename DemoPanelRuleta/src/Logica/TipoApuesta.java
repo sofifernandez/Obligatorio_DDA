@@ -77,7 +77,7 @@ public abstract class TipoApuesta {
         return casillero;
     }
     
-    public abstract void validarApuesta(Ronda rondaActual, Apuesta apuesta)throws ApuestaInvalidaException;
+    public abstract void validarApuesta( Apuesta apuesta)throws ApuestaInvalidaException;
 
     @Override
     public int hashCode() {

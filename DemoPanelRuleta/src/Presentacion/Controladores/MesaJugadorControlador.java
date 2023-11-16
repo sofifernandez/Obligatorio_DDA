@@ -84,6 +84,7 @@ public class MesaJugadorControlador implements Observador {
     public void setApuesta(int cellCode, int valorFicha) {
         try {
             this.jm.realizarApuesta(cellCode, valorFicha);
+            this.vista.mostrarCoin(cellCode, valorFicha);
         } catch (ApuestaInvalidaException e) {
             this.vista.mostrarMensaje(e.getMessage());
         }

@@ -22,8 +22,8 @@ public class Casillero {
         this.tipo=tipo;
     }
     
-    public void validarApuesta(Ronda ronda, Apuesta apuesta) throws ApuestaInvalidaException{
-        this.tipo.validarApuesta(ronda, apuesta);
+    public void validarApuesta( Apuesta apuesta) throws ApuestaInvalidaException{
+        this.tipo.validarApuesta(apuesta);
     }
     
     public boolean contieneValor(int x){

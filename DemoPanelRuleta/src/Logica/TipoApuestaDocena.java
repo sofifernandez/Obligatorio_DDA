@@ -19,7 +19,7 @@ public class TipoApuestaDocena extends TipoApuesta{
     }
 
     @Override
-    public void validarApuesta(Ronda rondaActual, Apuesta apuesta)throws ApuestaInvalidaException {
+    public void validarApuesta(Apuesta apuesta)throws ApuestaInvalidaException {
         JugadorMesa jm= apuesta.getJugadorMesa();
         Ronda ronda= apuesta.getRonda();
         if(chequearRestriccionDocenas(jm, ronda)){

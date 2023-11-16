@@ -8,11 +8,11 @@ import Logica.JugadorMesa;
 import Presentacion.Controladores.MesaJugadorControlador;
 import Presentacion.Interfaces.MesaJugadorInterface;
 import componente.PanelRuleta;
-import componente.PanelRuleta.Escuchador;
 import java.util.List;
-import javax.swing.JButton;
-import javax.swing.JLabel;
+
 import javax.swing.JOptionPane;
+
+
 
 /**
  *
@@ -42,6 +42,8 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     private void initComponents() {
 
         jTextField2 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         panelRuleta1 = new componente.PanelRuleta();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
@@ -58,8 +60,23 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
         lblUsername = new javax.swing.JLabel();
         lblSorteado = new javax.swing.JLabel();
         btnAbandonar = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tablaDatos = new javax.swing.JTable();
 
         jTextField2.setText("jTextField2");
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -126,6 +143,20 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
             }
         });
 
+        tablaDatos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Ronda", "Total Apostado", "Ganado", "Perdido", "Balance"
+            }
+        ));
+        jScrollPane2.setViewportView(tablaDatos);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -133,6 +164,10 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
             .addGroup(layout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 742, Short.MAX_VALUE)
+                        .addComponent(btnAbandonar)
+                        .addGap(17, 17, 17))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(818, 818, 818)
                         .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE))
@@ -157,7 +192,7 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
                                         .addComponent(ficha50)
                                         .addGap(18, 18, 18)
                                         .addComponent(ficha100)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 128, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(lblSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
@@ -171,10 +206,10 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
                                         .addComponent(lblUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnAbandonar)
-                .addGap(17, 17, 17))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(63, 63, 63)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,7 +243,9 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
                         .addComponent(lblSorteado, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(40, 40, 40)
                 .addComponent(panelRuleta1, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnAbandonar)
                 .addGap(19, 19, 19))
         );
@@ -308,7 +345,10 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel lblMesa;
     private javax.swing.JLabel lblRonda;
@@ -316,8 +356,10 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     private javax.swing.JLabel lblSorteado;
     private javax.swing.JLabel lblUsername;
     private componente.PanelRuleta panelRuleta1;
+    private javax.swing.JTable tablaDatos;
     // End of variables declaration//GEN-END:variables
 
+    
     @Override
     public void actualizarSaldo(int saldo) {
         lblSaldo.setText(""+saldo);
@@ -385,9 +427,13 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
                 @Override
                 public void celdaSeleccionada(int universalCellCode) {
                     controlador.setApuesta(universalCellCode, fichaSeleccionada);
-                    panelRuleta1.setApuesta(universalCellCode, fichaSeleccionada+ panelRuleta1.getApuesta(universalCellCode));
+                    
                 }                
             });
+    }
+      @Override
+    public void mostrarCoin(int cellCode, int valorFicha) {
+        panelRuleta1.setApuesta(cellCode, fichaSeleccionada+ panelRuleta1.getApuesta(cellCode));
     }
 
     @Override
@@ -404,6 +450,10 @@ public class MesaJugadorVentana extends javax.swing.JFrame implements MesaJugado
     public void cerrar() {
         dispose();
     }
+
+    
+
+  
     
    
 

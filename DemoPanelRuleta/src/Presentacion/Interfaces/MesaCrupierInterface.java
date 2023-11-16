@@ -46,7 +46,7 @@ public interface MesaCrupierInterface {
 
     public void actualizarUltimosLanzamientos(String ultimosResultadosString);
     
-    public void popularTabla(List<String> textos);
+    public void popularTabla(String textos);
 
     //public void popularTabla(List<String> textos);
 

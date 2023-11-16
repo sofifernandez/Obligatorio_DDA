@@ -32,7 +32,7 @@ public class Mesa extends Observable {
        this.idMesa = idClase + 1;
        this.disponible = false;
        this.tiposApuestas=new ArrayList();
-       //this.tiposApuestas.add(directa);
+       this.tiposApuestas.add(directa);
        this.rondas=new ArrayList();
        this.jugadoresMesa=new ArrayList();
        this.idRonda=0;

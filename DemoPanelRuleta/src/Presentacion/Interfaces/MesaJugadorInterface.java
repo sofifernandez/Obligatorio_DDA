@@ -41,5 +41,7 @@ public interface MesaJugadorInterface {
     public int mensajeConfirmacion(String mensaje);
 
     public void cerrar();
+
+    public void mostrarCoin(int cellCode, int valorFicha);
     
 }
